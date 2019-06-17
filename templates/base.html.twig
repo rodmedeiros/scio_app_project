@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
+
+        <title>{% block title %}ScioApp{% endblock %}</title>
+        {% block stylesheets %}
+            {{ encore_entry_link_tags('app') }}
+            <link href="http://cdn.linearicons.com/free/1.0.0/icon-font.min.css" rel="stylesheet" type="text/css">
+        {% endblock %}
+    </head>
+    <body>
+
+        <div class="container body-container">
+            {% block body %}
+                <div class="row">
+                    <div id="main" class="col-sm-9">
+                        {{ include('default/_flash_messages.html.twig') }}
+
+                        {% block main %}{% endblock %}
+                    </div>
+
+                    <div id="sidebar" class="col-sm-3">
+                        {% block sidebar %}
+
+                        {% endblock %}
+                    </div>
+                </div>
+            {% endblock %}
+        </div>
+
+        {% block footer %}
+            <footer>
+                <div class="px-footer">
+                    <div class="container p-t-3">
+                        <div class="row">
+
+                            <div class="col-sm-3">
+                                <h5 class="m-t-0 m-b-1">LINKS</h5>
+                                <div style="line-height: 1.7;">
+                                    <a href="#">Sobre</a><br>
+                                    <a href="#">Principal</a><br>
+                                    <a href="#">Blog</a><br>
+                                    <a href="#">Contato</a><br>
+                                    <a href="#">Termos</a><br>
+                                    <a href="#">Privacidade</a>
+                                </div>
+                            </div>
+
+                            <!-- spacer -->
+                            <div class="m-t-4 visible-xs"></div>
+
+                            <div class="col-sm-3">
+                                <h5 class="m-t-0 m-b-1">CATEGORIAS</h5>
+                                <div style="line-height: 1.7;">
+                                    <a href="#">Educação</a><br>
+                                    <a href="#">Questões</a><br>
+                                    <a href="#">Provas</a><br>
+                                    <a href="#">Compartilhamento</a><br>
+                                    <a href="#">Filmes</a><br>
+                                    <a href="#">Conhecimento</a><br>
+                                </div>
+                            </div>
+
+                            <hr>
+
+                        </div>
+                    </div>
+                </div>
+            </footer>
+        {% endblock %}
+
+    {% block javascripts %}
+        {{ encore_entry_script_tags('app') }}
+        <script src="https://cdn.jsdelivr.net/npm/jquery-validation@1.19.0/dist/jquery.validate.js"></script>
+        {{ encore_entry_script_tags('pixel_admin') }}
+        {{ encore_entry_script_tags('way_points') }}
+        {{ encore_entry_script_tags('scroll_to') }}
+        {{ encore_entry_script_tags('lazy_sizes') }}
+        {{ encore_entry_script_tags('landing') }}
+        {{ encore_entry_script_tags('pixel_admin') }}
+    {% endblock %}
+
+    </body>
+</html>

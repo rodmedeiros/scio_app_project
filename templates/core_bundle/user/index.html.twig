@@ -1,0 +1,310 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <!-- Navbar -->
+
+    <nav class="navbar px-navbar">
+        <div class="container">
+            <div class="navbar-header">
+                <a href="#home" class="scroll-to navbar-brand" >ScioApp</a>
+            </div>
+
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target=".navbar-collapse" aria-expanded="false"><i class="navbar-toggle-icon"></i></button>
+
+            <div class="collapse navbar-collapse">
+                <ul class="nav navbar-nav navbar-right">
+                    <li><a href="#materials" class="scroll-to">MATERIAIS PEDAGÓGICOS</a></li>
+                    <li><a href="#features" class="scroll-to">FUNCIONALIDADES</a></li>
+                    <li><a href="#customers" class="scroll-to">OPINIÃO</a></li>
+                    <li><a href="#about-us" class="scroll-to">SOBRE</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero block -->
+
+    <a class="position-relative" name="home"></a>
+    <div id="landing-hero" class="text-xs-center clearfix">
+        <div class="container">
+            <!-- Header -->
+            <h1 class="font-weight-semibold">Completo para você e seus alunos</h1>
+            <h2 class="font-weight-light">
+                Voltado para o professor, com <strong>ScioApp</strong> você cria, compartilha,
+                encontra novos materiais pedagógicos e muito mais.
+            </h2>
+
+            <!-- Buttons -->
+            <div>
+                <a href="../authentication/pages-signup-v2.html" class="btn btn-rounded btn-xl btn-primary m-x-1">Criar Conta</a>
+                <a href="../authentication/pages-signin-v2.html" class="btn btn-xl btn-outline btn-outline-colorless-inverted btn-rounded m-x-1">
+                    Entrar
+                </a>
+            </div>
+
+            <!-- App sample -->
+            <div class="sample">
+                <!-- <img src="assets/img/sample-img.png" alt="" class="sample-img">
+                <img src="assets/img/sample-win.png" alt="" class="sample-win"> -->
+            </div>
+        </div>
+    </div>
+
+    <!-- Features -->
+
+    <a class="position-relative" name="materials"></a>
+    <div class="landing-section landing-features-grid bg-white b-y-1" style="padding: 100px;">
+        <div class="container">
+            <h1 class="landing-heading text-xs-center">Materiais Pedagógicos</h1>
+            <h2 class="landing-subheading text-xs-center text-muted">Lorem ipsum dolor sit amet, singulis efficiendi necessitatibus qui ad</h2>
+
+            <div class="row">
+                <div class="col-md-4">
+                    <i class="icon bg-primary lnr lnr-list"></i>
+                    <h3>Questões</h3>
+                    <p>Lorem ipsum dolor sit amet, singulis efficiendi necessitatibus qui ad</p>
+                </div>
+                <div class="col-md-4">
+                    <i class="icon bg-primary lnr lnr-book"></i>
+                    <h3>Projetos Escolares</h3>
+                    <p>Lorem ipsum dolor sit amet, singulis efficiendi necessitatibus qui ad</p>
+                </div>
+                <div class="col-md-4">
+                    <i class="icon bg-primary lnr lnr-license"></i>
+                    <h3>PPP</h3>
+                    <p>Lorem ipsum dolor sit amet, singulis efficiendi necessitatibus qui ad</p>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-4">
+                    <i class="icon bg-primary lnr lnr-file-add"></i>
+                    <h3>Planos de Aula</h3>
+                    <p>Lorem ipsum dolor sit amet, singulis efficiendi necessitatibus qui ad</p>
+                </div>
+                <div class="col-md-4">
+                    <i class="icon bg-primary lnr lnr-picture"></i>
+                    <h3>Slides</h3>
+                    <p>Lorem ipsum dolor sit amet, singulis efficiendi necessitatibus qui ad</p>
+                </div>
+                <div class="col-md-4">
+                    <i class="icon bg-primary lnr lnr-film-play"></i>
+                    <h3>Links para Filmes e Artigos</h3>
+                    <p>Lorem ipsum dolor sit amet, singulis efficiendi necessitatibus qui ad</p>
+                </div>
+            </div>
+
+        </div>
+    </div>
+    </div>
+
+    <!-- Other Features -->
+
+    <a class="position-relative" name="features"></a>
+    <div class="landing-section landing-features bg-white b-b-1">
+        <div class="container">
+            <div class="col-md-7 text-xs-center text-md-left">
+                <i class="icon lnr lnr-layers text-primary"></i>
+
+                <h2 class="landing-heading">FUNCIONALIDADES</h2>
+                <h3 class="landing-subheading text-muted">Lorem ipsum dolor sit amet, singulis efficiendi necessitatibus qui ad</h3>
+
+                <ul class="list-group">
+                    <li class="list-group-item"><i class="list-group-icon lnr lnr-chevron-right"></i>Clean code base</li>
+                    <li class="list-group-item"><i class="list-group-icon lnr lnr-chevron-right"></i>Crafted with modern technologies</li>
+                    <li class="list-group-item"><i class="list-group-icon lnr lnr-chevron-right"></i>Built with performance in mind</li>
+                    <li class="list-group-item"><i class="list-group-icon lnr lnr-chevron-right"></i>Flexible and modular code structure</li>
+                    <li class="list-group-item"><i class="list-group-icon lnr lnr-chevron-right"></i>Built with mobile-first approach</li>
+                    <li class="list-group-item"><i class="list-group-icon lnr lnr-chevron-right"></i>Powerful layout with responsive functionality</li>
+                    <li class="list-group-item"><i class="list-group-icon lnr lnr-chevron-right"></i>Full support of RTL languages</li>
+                    <li class="list-group-item"><i class="list-group-icon lnr lnr-chevron-right"></i>Light and dark color schemes</li>
+                    <li class="list-group-item"><i class="list-group-icon lnr lnr-chevron-right"></i>Usage instructions for the variuous components</li>
+                </ul>
+            </div>
+
+            <!-- spacer -->
+            <div class="col-md-1 p-y-4"></div>
+
+            <div class="col-md-4">
+                <img src="{{ asset('build/images/educacao-e-inovacao.jpg') }}" class="lazyload image pull-md-left">
+            </div>
+        </div>
+
+        <hr class="m-a-0">
+        <!-- spacer -->
+        <div class="col-md-1 p-y-4"></div>
+
+
+    </div>
+
+    <hr class="m-a-0">
+
+    <!-- Clients -->
+
+    <a class="position-relative" name="customers"></a>
+    <div class="landing-section landing-clients bg-white">
+        <div class="container">
+            <h1 class="landing-heading text-xs-center">What Our Clients Say</h1>
+
+            <div class="owl-carousel owl-carousel-inverted">
+                <div class="landing-clients-review">
+                    <blockquote>
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut a quam ac lacus varius suscipit. Donec vitae consectetur est. Vestibulum rhoncus, libero et ornare porta, elit neque imperdiet metus, id imperdiet lorem nunc eget lorem.
+                    </blockquote>
+                    <footer>
+                        <img src="{{ asset('build/images/avatars/2.jpg') }}">
+                        Robert Jang<br>
+                        <a href="#">EXAMPLE.COM</a>
+                    </footer>
+                </div>
+                <div class="landing-clients-review">
+                    <blockquote>
+                        Praesent viverra et nibh a volutpat. Phasellus ultrices tristique magna vitae vulputate.
+                    </blockquote>
+                    <footer>
+                        <img src="{{ asset('build/images/avatars/3.jpg') }}">
+                        Michelle Bortz<br>
+                        <a href="#">XYZ LTD.</a>
+                    </footer>
+                </div>
+                <div class="landing-clients-review">
+                    <blockquote>
+                        Cras elementum, felis eget eleifend volutpat, urna mauris cursus orci, vitae interdum turpis arcu in erat. Donec sollicitudin scelerisque metus ac volutpat.
+                    </blockquote>
+                    <footer>
+                        <img src="{{ asset('build/images/avatars/4.jpg') }}">
+                        Timothy Owens<br>
+                        <a href="#">SITE.COM</a>
+                    </footer>
+                </div>
+                <div class="landing-clients-review">
+                    <blockquote>
+                        Vivamus accumsan libero mi, nec aliquam mi pretium eget. Donec a ex id tortor gravida lacinia nec sit amet mauris. Sed eros erat, hendrerit sed justo id, facilisis consequat metus.
+                    </blockquote>
+                    <footer>
+                        <img src="{{ asset('build/images/avatars/5.jpg') }}">
+                        Denise Steiner<br>
+                        <a href="#">COMPANY INC.</a>
+                    </footer>
+                </div>
+                <div class="landing-clients-review">
+                    <blockquote>
+                        Integer et metus lobortis, lacinia turpis at, consequat ante.
+                    </blockquote>
+                    <footer>
+                        <img src="{{ asset('build/images/avatars/1.jpg') }}">
+                        John Doe<br>
+                        <a href="#">ONLINE.COM</a>
+                    </footer>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Team -->
+
+    <a class="position-relative" name="about-us"></a>
+    <div class="landing-section">
+        <div class="container">
+            <h1 class="landing-heading text-xs-center">Nossa Equipe</h1>
+            <h2 class="landing-subheading text-muted text-xs-center">Conheça nossa</h2>
+
+            <div class="row">
+
+                <div class="col-md-6 col-lg-3">
+                    <div class="landing-team panel bg-transparent">
+                        <div class="panel-body">
+                            <img class="photo" src="{{ asset('build/images/avatars/eu.jpeg') }}" alt="">
+                            <p class="name">Rodrigo</p>
+                            <p class="post text-muted">DESENVOLVEDOR</p>
+                            <hr>
+                            <p class="bio">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent condimentum maximus lectus eget auctor.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-6 col-lg-3">
+                    <div class="landing-team panel bg-transparent">
+                        <div class="panel-body">
+                            <img class="photo" src="{{ asset('build/images/avatars/rafael.jpeg') }}" alt="">
+                            <p class="name">Rafael</p>
+                            <p class="post text-muted">Desenvolvedor</p>
+                            <hr>
+                            <p class="bio">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent condimentum maximus lectus eget auctor.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-6 col-lg-3">
+                    <div class="landing-team panel bg-transparent">
+                        <div class="panel-body">
+                            <img class="photo" src="{{ asset('build/images/avatars/thomaz.jpeg') }}"alt="">
+                            <p class="name">Thomaz</p>
+                            <p class="post text-muted">FINANCIAL DIRECTOR</p>
+                            <hr>
+                            <p class="bio">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent condimentum maximus lectus eget auctor.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-6 col-lg-3">
+                    <div class="landing-team panel bg-transparent">
+                        <div class="panel-body">
+                            <img class="photo" src="{{ asset('build/images/avatars/ramon.jpeg') }}" alt="">
+                            <p class="name">Ramon</p>
+                            <p class="post text-muted">DESIGNER</p>
+                            <hr>
+                            <p class="bio">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent condimentum maximus lectus eget auctor.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-6 col-lg-3">
+                    <div class="landing-team panel bg-transparent">
+                        <div class="panel-body">
+                            <img class="photo" src="{{ asset('build/images/avatars/caio.jpeg') }}" alt="">
+                            <p class="name">Caio Lima</p>
+                            <p class="post text-muted">SENIOR ENGINEER</p>
+                            <hr>
+                            <p class="bio">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent condimentum maximus lectus eget auctor.</p>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <!-- Social buttons -->
+
+    <div class="landing-section landing-social bg-white darker b-t-1">
+        <div class="container text-xs-center">
+            <h1 class="landing-heading">ScioApp nas Redes Sociais</h1>
+            <h2 class="landing-subheading text-muted">Lorem ipsum dolor sit amet, singulis efficiendi necessitatibus qui ad</h2>
+
+            <a href="#" class="btn btn-primary btn-outline"><i class="fa fa-facebook"></i></a>
+            &nbsp;&nbsp;&nbsp;
+            <a href="#" class="btn btn-primary btn-outline"><i class="fa fa-twitter"></i></a>
+            &nbsp;&nbsp;&nbsp;
+            <a href="#" class="btn btn-primary btn-outline"><i class="fa fa-google"></i></a>
+            &nbsp;&nbsp;&nbsp;
+            <a href="#" class="btn btn-primary btn-outline"><i class="fa fa-pinterest"></i></a>
+        </div>
+    </div>
+
+    <!-- Subscribe -->
+
+    <div class="landing-section bg-primary p-y-3">
+        <div class="container text-xs-center p-y-4">
+            <h2 class="landing-heading m-b-3">SUBSCRIBE TO OUR NEWSLETTER</h2>
+
+            <form action="" class="landing-subscribe input-group input-group-lg">
+                <span class="input-group-addon"><i class="fa fa-paper-plane"></i></span>
+                <input type="text" class="form-control" placeholder="Your E-mail">
+                <span class="input-group-btn">
+          <button type="submit" class="btn font-weight-semibold font-size-14">SUBSCRIBE</button>
+        </span>
+            </form>
+        </div>
+    </div>
+{% endblock %}
