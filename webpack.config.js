@@ -25,7 +25,6 @@ Encore
      */
     .addEntry('app', './assets/js/app.js')
     .addEntry('pixel_admin', './assets/js/pixeladmin.min.js')
-    .addEntry('scroll_to', './assets/js/jquery.scrollTo.min.js')
     .addEntry('way_points', './assets/js/jquery.waypoints.min.js')
     .addEntry('landing', './assets/js/landing.js')
     .addEntry('lazy_sizes', './assets/js/lazysizes.min.js')

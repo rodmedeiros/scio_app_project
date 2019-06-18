@@ -3,22 +3,19 @@
 {% block body %}
     <!-- Navbar -->
 
-    <nav class="navbar px-navbar">
-        <div class="container">
-            <div class="navbar-header">
-                <a href="#home" class="scroll-to navbar-brand" >ScioApp</a>
-            </div>
+    <nav class="navbar navbar-expand-lg fixed-top navbar-light bg-light">
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo03" aria-controls="navbarTogglerDemo03" aria-expanded="false" aria-label="Alterna navegação">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <a class="navbar-brand" href="#">ScioApp</a>
 
-            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target=".navbar-collapse" aria-expanded="false"><i class="navbar-toggle-icon"></i></button>
-
-            <div class="collapse navbar-collapse">
-                <ul class="nav navbar-nav navbar-right">
-                    <li><a href="#materials" class="scroll-to">MATERIAIS PEDAGÓGICOS</a></li>
-                    <li><a href="#features" class="scroll-to">FUNCIONALIDADES</a></li>
-                    <li><a href="#customers" class="scroll-to">OPINIÃO</a></li>
-                    <li><a href="#about-us" class="scroll-to">SOBRE</a></li>
-                </ul>
-            </div>
+        <div class="collapse navbar-collapse" id="navbarTogglerDemo03">
+            <ul class="navbar-nav mr-auto mt-2 mt-lg-0 ">
+                <li><a href="#materials" class="nav-link scroll-to">MATERIAIS PEDAGÓGICOS</a></li>
+                <li><a href="#features" class="nav-link scroll-to">FUNCIONALIDADES</a></li>
+                <li><a href="#customers" class="nav-link scroll-to">OPINIÃO</a></li>
+                <li><a href="#about-us" class="nav-link scroll-to">SOBRE</a></li>
+            </ul>
         </div>
     </nav>
 
@@ -36,7 +33,7 @@
 
             <!-- Buttons -->
             <div>
-                <a href="../authentication/pages-signup-v2.html" class="btn btn-rounded btn-xl btn-primary m-x-1">Criar Conta</a>
+                <a href="{{ path('scio_app_register') }}" class="btn btn-rounded btn-xl btn-primary m-x-1">Criar Conta</a>
                 <a href="../authentication/pages-signin-v2.html" class="btn btn-xl btn-outline btn-outline-colorless-inverted btn-rounded m-x-1">
                     Entrar
                 </a>
@@ -283,11 +280,8 @@
             <h2 class="landing-subheading text-muted">Lorem ipsum dolor sit amet, singulis efficiendi necessitatibus qui ad</h2>
 
             <a href="#" class="btn btn-primary btn-outline"><i class="fa fa-facebook"></i></a>
-            &nbsp;&nbsp;&nbsp;
             <a href="#" class="btn btn-primary btn-outline"><i class="fa fa-twitter"></i></a>
-            &nbsp;&nbsp;&nbsp;
             <a href="#" class="btn btn-primary btn-outline"><i class="fa fa-google"></i></a>
-            &nbsp;&nbsp;&nbsp;
             <a href="#" class="btn btn-primary btn-outline"><i class="fa fa-pinterest"></i></a>
         </div>
     </div>

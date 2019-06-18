@@ -8,15 +8,17 @@
 // any CSS you require will output into a single css file (app.css in this case)
 import '../css/app.scss';
 import getNiceMessage from './component/get_nice_message';
-// import $ from 'jquery';
+import $ from 'jquery';
 import 'bootstrap';
-import 'jquery-validate';
+import 'jquery-scrollTo';
+
+
 
 
 global.$ = $;
 
 // require jQuery normally
-const $ = require('jquery');
+// const $ = require('jquery');
 
 // create global $ and jQuery variables
 // global.$ = global.jQuery = $;

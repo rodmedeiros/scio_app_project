@@ -5065,12 +5065,24 @@ isstream@~0.1.2:
   resolved "https://registry.yarnpkg.com/isstream/-/isstream-0.1.2.tgz#47e63f7af55afa6f92e1500e690eb8b8529c099a"
   integrity sha1-R+Y/evVa+m+S4VAOaQ64uFKcCZo=
 
+jquery-scrollTo@^0.2.2:
+  version "0.2.2"
+  resolved "https://registry.yarnpkg.com/jquery-scrollTo/-/jquery-scrollTo-0.2.2.tgz#40b1be86fab5c51d39155bfeefda42105a7f607b"
+  integrity sha512-P6nHyAPC/TXJOxhcyye339YSKoFlDolLRj052HGCNfr7aVPd5bCW9OA0gsTLiuStYxOM3WLPdDGWbYkJ83N8SA==
+  dependencies:
+    jquery ">=2.2.0"
+
 jquery-validate@^2.0.0:
   version "2.0.0"
   resolved "https://registry.yarnpkg.com/jquery-validate/-/jquery-validate-2.0.0.tgz#a9da9e56682627fc4fc5474cc1d10c268509c259"
   integrity sha1-qdqeVmgmJ/xPxUdMwdEMJoUJwlk=
 
-jquery@>=1.7, jquery@^3.4.1:
+jquery-waypoints@^2.0.5:
+  version "2.0.5"
+  resolved "https://registry.yarnpkg.com/jquery-waypoints/-/jquery-waypoints-2.0.5.tgz#c302b188e2957ed763098793304a76356aeeee04"
+  integrity sha1-wwKxiOKVftdjCYeTMEp2NWru7gQ=
+
+jquery@>=1.7, jquery@>=2.2.0, jquery@^3.4.1:
   version "3.4.1"
   resolved "https://registry.yarnpkg.com/jquery/-/jquery-3.4.1.tgz#714f1f8d9dde4bdfa55764ba37ef214630d80ef2"
   integrity sha512-36+AdBzCL+y6qjw5Tx7HgzeGCzC81MDDgaUP8ld2zhx58HdqXGoBd+tHdrBMiyjGQs0Hxs/MLZTu/eHNJJuWPw==

@@ -1,0 +1,91 @@
+{#{% extends 'base.html.twig' %}#}
+
+{#{% block title %}Register{% endblock %}#}
+
+{#{% block body %}#}
+{#    <h1>Register</h1>#}
+
+{#    {{ form_start(registrationForm) }}#}
+{#        {{ form_row(registrationForm.email) }}#}
+{#        {{ form_row(registrationForm.plainPassword) }}#}
+
+{#        <button class="btn">Register</button>#}
+{#    {{ form_end(registrationForm) }}#}
+{#{% endblock %}#}
+
+
+{% extends 'base.html.twig' %}
+
+{% block title %}Registrar{% endblock %}
+
+{% block body %}
+
+    <div class="page-signup-header p-a-2 text-sm-center bg-white">
+        <a class="px-demo-brand px-demo-brand-lg text-default" href="{{ path('site_home') }}"></span>ScioApp</a>
+        <a href="pages-signin-v2.html" class="btn btn-primary">Entrar</a>
+    </div>
+
+    <div class="page-signup-container">
+        <h2 class="m-t-0 m-b-4 text-xs-center font-weight-semibold font-size-20">Crie sua Conta</h2>
+
+        <div class="panel p-a-4">
+            <div>
+            {{ form_start(form) }}
+                {{ form_row(form.username) }}
+                {{ form_row(form.email) }}
+                {{ form_row(form.plainPassword) }}
+{#                {{ form_row(form.plainPassword.second) }}#}
+
+            </div><br />
+
+            <label class="custom-control custom-checkbox">
+                <input type="checkbox" class="custom-control-input">
+                <span class="custom-control-indicator"></span>
+                Concordo com os <a href="#" target="_blank">Termos e Condições</a>
+            </label>
+
+            <button type="submit" class="btn btn-block btn-lg btn-primary m-t-3">Criar</button>
+            {{ form_end(form) }}
+        </div>
+    </div>
+    {% block footer %}{% endblock %}
+{% endblock %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    <style>
+        .page-signup-header {
+            box-shadow: 0 2px 2px rgba(0,0,0,.05), 0 1px 0 rgba(0,0,0,.05);
+        }
+        .page-signup-header .btn {
+            position: absolute;
+            top: 12px;
+            right: 15px;
+        }
+        html[dir="rtl"] .page-signup-header .btn {
+            right: auto;
+            left: 15px;
+        }
+        .page-signup-container {
+            width: auto;
+            margin: 30px 10px;
+        }
+        .page-signup-container form {
+            border: 0;
+            box-shadow: 0 2px 2px rgba(0,0,0,.05), 0 1px 0 rgba(0,0,0,.05);
+        }
+        @media (min-width: 544px) {
+            .page-signup-container {
+                width: 350px;
+                margin: 60px auto;
+            }
+        }
+        .page-signup-social-btn {
+            width: 40px;
+            padding: 0;
+            line-height: 40px;
+            text-align: center;
+            border: none !important;
+        }
+    </style>
+{% endblock %}
