@@ -1,0 +1,31 @@
+{% extends 'base_auth.html.twig' %}
+
+{% block form_title %}Entrar{% endblock %}
+{% block form %}
+<form method="post">
+    {% if error %}
+        <div class="alert alert-danger">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
+    {% endif %}
+    <label for="inputEmail">Email</label>
+    <input type="email" value="{{ last_username }}" name="email" id="inputEmail" class="form-control" placeholder="Email" required autofocus>
+    <label for="inputPassword">Password</label>
+    <input type="password" name="password" id="inputPassword" class="form-control" placeholder="Password" required>
+
+    <input type="hidden" name="_csrf_token"
+           value="{{ csrf_token('authenticate') }}"
+    ><br />
+
+
+{#    Uncomment this section and add a remember_me option below your firewall to activate remember me functionality.#}
+{#    See https://symfony.com/doc/current/security/remember_me.html#}
+
+    <label class="custom-control custom-checkbox">
+        <input type="checkbox" class="custom-control-input" name="_remember_me">
+        <span class="custom-control-indicator"></span>Me Lembrar
+    </label>
+
+    <button  type="submit" class="btn btn-block btn-lg btn-primary m-t-3">
+        Entrar
+    </button>
+</form>
+{% endblock %}

@@ -1,0 +1,25 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+
+
+    <div class="page-signup-header p-a-2 text-sm-center bg-white">
+        <a class="px-demo-brand px-demo-brand-lg text-default" href="{{ path('site_home') }}"></span>ScioApp</a>
+    </div>
+
+    <div class="page-signup-container">
+        <h2 class="m-t-0 m-b-4 text-xs-center font-weight-semibold font-size-20">{% block form_title %}{% endblock %}</h2>
+
+        <div class="panel p-a-4">
+            {% block form %}{% endblock %}
+        </div>
+    </div>
+    {% block footer %}{% endblock %}
+{% endblock %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    <style>
+
+    </style>
+{% endblock %}

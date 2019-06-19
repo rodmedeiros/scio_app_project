@@ -1,0 +1,37 @@
+.page-signup-header {
+  box-shadow: 0 2px 2px rgba(0,0,0,.05), 0 1px 0 rgba(0,0,0,.05);
+}
+.page-signup-header .btn {
+  position: absolute;
+  top: 12px;
+  right: 15px;
+}
+html[dir="rtl"] .page-signup-header .btn {
+  right: auto;
+  left: 15px;
+}
+.page-signup-container {
+  width: auto;
+  margin: 30px 10px;
+}
+.page-signup-container form {
+  border: 0;
+  box-shadow: 0 2px 2px rgba(0,0,0,.05), 0 1px 0 rgba(0,0,0,.05);
+}
+@media (min-width: 544px) {
+  .page-signup-container {
+    width: 350px;
+    margin: 60px auto;
+  }
+}
+.page-signup-social-btn {
+  width: 40px;
+  padding: 0;
+  line-height: 40px;
+  text-align: center;
+  border: none !important;
+}
+
+label{
+  padding-top: 5px;
+}
