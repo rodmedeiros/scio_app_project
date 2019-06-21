@@ -1,4 +1,4 @@
-{% extends 'base.html.twig' %}
+{% extends 'base_site.html.twig' %}
 
 {% block body %}
     <!-- Navbar -->
@@ -22,7 +22,7 @@
     <!-- Hero block -->
 
     <a class="position-relative" name="home"></a>
-    <div id="landing-hero" class="text-xs-center clearfix">
+    <div id="landing-hero" class="text-xs-center clearfix ">
         <div class="container">
             <!-- Header -->
             <h1 class="font-weight-semibold">Completo para você e seus alunos</h1>
@@ -301,4 +301,44 @@
             </form>
         </div>
     </div>
+    {% block footer %}
+        <footer>
+            <div class="px-footer">
+                <div class="container p-t-3">
+                    <div class="row">
+
+                        <div class="col-sm-3">
+                            <h5 class="m-t-0 m-b-1">LINKS</h5>
+                            <div style="line-height: 1.7;">
+                                <a href="#">Sobre</a><br>
+                                <a href="#">Principal</a><br>
+                                <a href="#">Blog</a><br>
+                                <a href="#">Contato</a><br>
+                                <a href="#">Termos</a><br>
+                                <a href="#">Privacidade</a>
+                            </div>
+                        </div>
+
+                        <!-- spacer -->
+                        <div class="m-t-4 visible-xs"></div>
+
+                        <div class="col-sm-3">
+                            <h5 class="m-t-0 m-b-1">CATEGORIAS</h5>
+                            <div style="line-height: 1.7;">
+                                <a href="#">Educação</a><br>
+                                <a href="#">Questões</a><br>
+                                <a href="#">Provas</a><br>
+                                <a href="#">Compartilhamento</a><br>
+                                <a href="#">Filmes</a><br>
+                                <a href="#">Conhecimento</a><br>
+                            </div>
+                        </div>
+
+                        <hr>
+
+                    </div>
+                </div>
+            </div>
+        </footer>
+    {% endblock %}
 {% endblock %}

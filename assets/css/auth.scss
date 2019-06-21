@@ -17,6 +17,7 @@ html[dir="rtl"] .page-signup-header .btn {
 .page-signup-container form {
   border: 0;
   box-shadow: 0 2px 2px rgba(0,0,0,.05), 0 1px 0 rgba(0,0,0,.05);
+  background-color: white;
 }
 @media (min-width: 544px) {
   .page-signup-container {
@@ -35,3 +36,4 @@ html[dir="rtl"] .page-signup-header .btn {
 label{
   padding-top: 5px;
 }
+

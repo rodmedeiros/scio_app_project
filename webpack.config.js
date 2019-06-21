@@ -24,8 +24,7 @@ Encore
      * and one CSS file (e.g. app.css) if you JavaScript imports CSS.
      */
     .addEntry('app', './assets/js/app.js')
-    .addEntry('pixel_admin', './assets/js/pixeladmin.min.js')
-    .addEntry('way_points', './assets/js/jquery.waypoints.min.js')
+    .addEntry('main', './assets/js/main.js')
     .addEntry('landing', './assets/js/landing.js')
     .addEntry('lazy_sizes', './assets/js/lazysizes.min.js')
 

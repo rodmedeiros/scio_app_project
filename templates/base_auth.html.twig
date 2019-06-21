@@ -1,9 +1,7 @@
-{% extends 'base.html.twig' %}
+{% extends 'base_site.html.twig' %}
 
 {% block body %}
-
-
-    <div class="page-signup-header p-a-2 text-sm-center bg-white">
+    <div class="page-signup-header p-a-2 text-sm-center bg-white" style="width: 100%; margin: 0; padding: 0">
         <a class="px-demo-brand px-demo-brand-lg text-default" href="{{ path('site_home') }}"></span>ScioApp</a>
     </div>
 
@@ -17,9 +15,3 @@
     {% block footer %}{% endblock %}
 {% endblock %}
 
-{% block stylesheets %}
-    {{ parent() }}
-    <style>
-
-    </style>
-{% endblock %}

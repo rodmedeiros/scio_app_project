@@ -1,0 +1,206 @@
+{% extends 'base.html.twig' %}
+
+{% block content %}
+    <h1>Bem Vindo, {{ user.username }}</h1>
+    <div class="row" style="height: 400px">
+
+    </div>
+    <div class="row">
+        <div class="col-md-5">
+
+            <!-- New users -->
+
+            <div class="panel panel-danger panel-dark">
+                <div class="panel-heading">
+                    <span class="panel-title"><i class="panel-title-icon fa fa-smile-o"></i>New users</span>
+                    <div class="panel-heading-controls">
+                        <ul class="pagination pagination-xs">
+                            <li><a href="#">«</a></li>
+                            <li class="active"><a href="#">1</a></li>
+                            <li><a href="#">2</a></li>
+                            <li><a href="#">3</a></li>
+                            <li><a href="#">»</a></li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="table-responsive">
+                    <table class="table">
+                        <thead>
+                        <tr>
+                            <th>#</th>
+                            <th>Username</th>
+                            <th>Full Name</th>
+                            <th>E-mail</th>
+                            <th></th>
+                        </tr>
+                        </thead>
+                        <tbody class="valign-middle">
+                        <tr>
+                            <td>1</td>
+                            <td>
+                                <img src="assets/demo/avatars/2.jpg" alt="" style="width:26px;height:26px;" class="border-round">&nbsp;&nbsp;<a href="#" title="">@rjang</a>
+                            </td>
+                            <td>Robert Jang</td>
+                            <td>rjang@example.com</td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td>2</td>
+                            <td>
+                                <img src="assets/demo/avatars/3.jpg" alt="" style="width:26px;height:26px;" class="border-round">&nbsp;&nbsp;<a href="#" title="">@mbortz</a>
+                            </td>
+                            <td>Michelle Bortz</td>
+                            <td>mbortz@example.com</td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td>3</td>
+                            <td>
+                                <img src="assets/demo/avatars/4.jpg" alt="" style="width:26px;height:26px;" class="border-round">&nbsp;&nbsp;<a href="#" title="">@towens</a>
+                            </td>
+                            <td>Timothy Owens</td>
+                            <td>towens@example.com</td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td>4</td>
+                            <td>
+                                <img src="assets/demo/avatars/5.jpg" alt="" style="width:26px;height:26px;" class="border-round">&nbsp;&nbsp;<a href="#" title="">@dsteiner</a>
+                            </td>
+                            <td>Denise Steiner</td>
+                            <td>dsteiner@example.com</td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td>5</td>
+                            <td>
+                                <img src="assets/demo/avatars/2.jpg" alt="" style="width:26px;height:26px;" class="border-round">&nbsp;&nbsp;<a href="#" title="">@rjang</a>
+                            </td>
+                            <td>Robert Jang</td>
+                            <td>rjang@example.com</td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td>6</td>
+                            <td>
+                                <img src="assets/demo/avatars/3.jpg" alt="" style="width:26px;height:26px;" class="border-round">&nbsp;&nbsp;<a href="#" title="">@mbortz</a>
+                            </td>
+                            <td>Michelle Bortz</td>
+                            <td>mbortz@example.com</td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td>7</td>
+                            <td>
+                                <img src="assets/demo/avatars/4.jpg" alt="" style="width:26px;height:26px;" class="border-round">&nbsp;&nbsp;<a href="#" title="">@towens</a>
+                            </td>
+                            <td>Timothy Owens</td>
+                            <td>towens@example.com</td>
+                            <td></td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!-- / New users -->
+
+        </div>
+        <div class="col-md-3 pull-right">
+
+            <!-- Recent tasks -->
+
+            <div class="panel panel-primary panel-dark">
+                <div class="panel-heading">
+                    <span class="panel-title"><i class="panel-title-icon fa fa-tasks"></i>Recent tasks</span>
+                </div>
+
+                <div class="widget-tasks-item">
+                    <span class="label label-warning pull-right">High</span>
+                    <label class="custom-control custom-checkbox">
+                        <input type="checkbox" class="custom-control-input">
+                        <span class="custom-control-indicator"></span>
+                        <span class="widget-tasks-title">A very important task</span>&nbsp;&nbsp;
+                        <span class="widget-tasks-timer">1 hour left</span>
+                    </label>
+                </div>
+
+                <div class="widget-tasks-item">
+                    <span class="label label-warning pull-right">High</span>
+                    <label class="custom-control custom-checkbox">
+                        <input type="checkbox" class="custom-control-input" checked="">
+                        <span class="custom-control-indicator"></span>
+                        <span class="widget-tasks-title">A very important task</span>&nbsp;&nbsp;
+                        <span class="widget-tasks-timer">58 minutes left</span>
+                    </label>
+                </div>
+
+                <div class="widget-tasks-item">
+                    <label class="custom-control custom-checkbox">
+                        <input type="checkbox" class="custom-control-input" checked="">
+                        <span class="custom-control-indicator"></span>
+                        <span class="widget-tasks-title">A regular task</span>
+                    </label>
+                </div>
+
+                <div class="widget-tasks-item">
+                    <label class="custom-control custom-checkbox">
+                        <input type="checkbox" class="custom-control-input">
+                        <span class="custom-control-indicator"></span>
+                        <span class="widget-tasks-title">A regular task</span>
+                    </label>
+                </div>
+
+                <div class="widget-tasks-item">
+                    <label class="custom-control custom-checkbox">
+                        <input type="checkbox" class="custom-control-input">
+                        <span class="custom-control-indicator"></span>
+                        <span class="widget-tasks-title">A regular task</span>
+                    </label>
+                </div>
+
+                <div class="widget-tasks-item">
+                    <span class="label pull-right">Low</span>
+                    <label class="custom-control custom-checkbox">
+                        <input type="checkbox" class="custom-control-input">
+                        <span class="custom-control-indicator"></span>
+                        <span class="widget-tasks-title">A regular task</span>
+                    </label>
+                </div>
+
+                <div class="widget-tasks-item">
+                    <span class="label pull-right">Low</span>
+                    <label class="custom-control custom-checkbox">
+                        <input type="checkbox" class="custom-control-input">
+                        <span class="custom-control-indicator"></span>
+                        <span class="widget-tasks-title">An unimportant task</span>
+                    </label>
+                </div>
+
+                <div class="widget-tasks-item">
+                    <span class="label pull-right">Low</span>
+                    <label class="custom-control custom-checkbox">
+                        <input type="checkbox" class="custom-control-input">
+                        <span class="custom-control-indicator"></span>
+                        <span class="widget-tasks-title">An unimportant task</span>
+                    </label>
+                </div>
+
+                <div class="widget-tasks-item">
+                    <label class="custom-control custom-checkbox">
+                        <input type="checkbox" class="custom-control-input">
+                        <span class="custom-control-indicator"></span>
+                        <span class="widget-tasks-title">An unimportant task</span>
+                    </label>
+                </div>
+            </div>
+
+            <!-- /Recent tasks -->
+
+        </div>
+    </div>
+    </div>
+
+
+{% endblock %}

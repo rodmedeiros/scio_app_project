@@ -1,85 +1,241 @@
 <!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="ie8 lt-ie9"> <![endif]-->
+<!--[if IE 9]>         <html class="ie9 gt-ie8"> <![endif]-->
+<!--[if gt IE 9]><!--> <html class="gt-ie8 gt-ie9 not-ie"> <!--<![endif]-->
 <html>
     <head>
-        <meta charset="UTF-8">
+        <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
-
         <title>{% block title %}ScioApp{% endblock %}</title>
+        <meta name="description" content="Midia Park">
+        <meta name="viewport" content="width=device-width">
+        <meta name="HandheldFriendly" content="true" >
+        <meta name="MobileOptimized" content="width" >
+        {% block meta %}{% endblock %}
+
         {% block stylesheets %}
             {{ encore_entry_link_tags('app') }}
             <link href="http://cdn.linearicons.com/free/1.0.0/icon-font.min.css" rel="stylesheet" type="text/css">
+            <link href="http://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css" rel="stylesheet" type="text/css">
+            <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
         {% endblock %}
+        <script type="text/javascript">
+            {% block js_vars %}{% endblock %}
+        </script>
     </head>
+{% block body %}
     <body>
+        <nav class="navbar navbar-expand-lg navbar-light bg-light sticky-top">
+            <div class="collapse navbar-collapse" id="navbar">
 
-        <div class="container body-container">
-            {% block body %}
-                <div class="row">
-                    <div id="main" class="col-sm-9">
-                        {{ include('default/_flash_messages.html.twig') }}
-
-                        {% block main %}{% endblock %}
+                <ul class="navbar-nav mr-auto">
+                    <li class="nav-item" id="open"><a id="open-icon">Menu &#9776; </a></li>
+                    <li class="nav-item">
+                        <a class="navbar-brand" href="{{ path('dashboard') }}">
+                            <span>ScioApp</span>
+                        </a>
+                    </li>
+                    <li class="px-nav-item menu" id="categories">
+                        <a href="#categories-dropdown" data-toggle="collapse" aria-expanded="false">
+                            Categorias
+                        </a>
+                    </li>
+                </ul>
+                <ul class="nav navbar-nav navbar-right">
+                    <li class="nav-item dropdown-header">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <span class="hidden-md">{{ app.user.username }}</span>
+                        </a>
+                        <div class="dropdown-menu dropdown-menu-right">
+                            <button class="dropdown-item">
+                                <a href="#"   class="text-dark">
+                                    <i class="dropdown-icon fa fa-envelope"></i>&nbsp;&nbsp;Mensagens
+                                </a>
+                            </button>
+                            <div class="dropdown-divider"></div>
+                            <button class="dropdown-item" type="button">
+                                <a href="{{ path('app_logout') }}"  class="text-dark">
+                                    <i class="dropdown-icon fa fa-power-off"></i>&nbsp;&nbsp;Sair
+                                </a>
+                            </button>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+        <div class="row" >
+            <div class="collapse col-md-5" id="categories-dropdown" style="position: absolute">
+                <div class="row categories-items">
+                    <div class="col-md-4">
+                        <ul>
+                            <li class="categories-header">Disciplinas</li><br />
+                            <li><a href="#">Artes</a></li>
+                            <li><a href="#">Biologia</a></li>
+                            <li><a href="#">Ciências</a></li>
+                            <li><a href="#">Educação Física</a></li>
+                            <li><a href="#">Espanhol</a></li>
+                            <li><a href="#">Física</a></li>
+                            <li><a href="#">Geografia</a></li>
+                            <li><a href="#">História</a></li>
+                            <li><a href="#">Inglês</a></li>
+                            <li><a href="#">Literatura</a></li>
+                            <li><a href="#">Matemática</a></li>
+                            <li><a href="#">Português</a></li>
+                            <li><a href="#">Química</a></li>
+                            <li><a href="#">Sociologia</a></li>
+                        </ul>
                     </div>
-
-                    <div id="sidebar" class="col-sm-3">
-                        {% block sidebar %}
-
-                        {% endblock %}
+                    <div class="col-md-4">
+                        <ul>
+                            <li class="categories-header">Materiais Pedagógicos</li>
+                            <li><a href="#">Questões</a></li>
+                            <li><a href="#">Slides</a></li>
+                            <li><a href="#">Planos de Aula</a></li>
+                            <li><a href="#">Projetos Políticos Pedagógicos</a></li>
+                            <li><a href="#">Planos de Aula</a></li>
+                            <li><a href="#">Projetos Escolares</a></li>
+                        </ul>
+                    </div>
+                    <div class="col-md-4">
+                        <ul>
+                            <li class="categories-header">Outros Assuntos</li><br />
+                            <li><a href="#">Alimentação</a></li>
+                            <li><a href="#">Notícias</a></li>
+                            <li><a href="#">Saúde</a></li>
+                            <li><a href="#">Esportes</a></li>
+                        </ul>
                     </div>
                 </div>
-            {% endblock %}
+            </div>
         </div>
 
-        {% block footer %}
-            <footer>
-                <div class="px-footer">
-                    <div class="container p-t-3">
-                        <div class="row">
+        {#sideBar#}
+        <div id="mySidenav" class="sidenav">
+            <ul>
+                <li class="nav-item menu">
+                    <a href="#accountSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
+                        <i class="nav-icon icon ion-person"></i>Minha Conta
+                    </a>
+                    <ul class="collapse submenu" id="accountSubmenu">
+                        <li>
+                            <a href="#">Perfil</a>
+                        </li>
+                        <li>
+                            <a href="#">Avaliações</a>
+                        </li>
+                        <li>
+                            <a href="#">Editar</a>
+                        </li>
+                    </ul>
+                </li>
+                <li class="nav-item menu">
+                    <a href="#exercisesSubmenu" class="dropdown-toggle" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
+                        <i class="nav-icon ion-ios-list"></i> Questões
+                    </a>
+                    <ul class="collapse submenu" id="exercisesSubmenu">
+                        <li>
+                            <a href="#">Minhas Questões</a>
+                        </li>
+                        <li>
+                            <a href="#">Pesquisar</a>
+                        </li>
+                        <li>
+                            <a href="#">Nova</a>
+                        </li>
+                    </ul>
+                </li>
+                <li class="nav-item menu">
+                    <a href="#slidesSubmenu" class="dropdown-toggle" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
+                        <i class="nav-icon ion-android-image"></i>Slides
+                    </a>
+                    <ul class="collapse submenu" id="slidesSubmenu">
+                        <li>
+                            <a href="#">Meus Slides</a>
+                        </li>
+                        <li>
+                            <a href="#">Pesquisar</a>
+                        </li>
+                        <li>
+                            <a href="#">Novo</a>
+                        </li>
+                    </ul>
+                </li>
+                <li class="nav-item menu">
+                    <a href="#projectsSubmenu" class="dropdown-toggle" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
+                        <i class="nav-icon ion-android-document"></i>Projetos
+                    </a>
+                    <ul class="collapse submenu" id="projectsSubmenu">
+                        <li>
+                            <a href="#">Meus Projetos</a>
+                        </li>
+                        <li>
+                            <a href="#">Pesquisar</a>
+                        </li>
+                        <li>
+                            <a href="#">Novo</a>
+                        </li>
+                    </ul>
+                </li>
+                <li class="nav-item menu">
+                    <a href="#plainsSubmenu" class="dropdown-toggle" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
+                        <i class="nav-icon ion-ios-keypad"></i>Planos de Aula
+                    </a>
+                    <ul class="collapse submenu" id="plainsSubmenu">
+                        <li>
+                            <a href="#">Meus Planos de aula</a>
+                        </li>
+                        <li>
+                            <a href="#">Pesquisar</a>
+                        </li>
+                        <li>
+                            <a href="#">Novo</a>
+                        </li>
+                    </ul>
+                </li>
+                <li class="nav-item menu">
+                    <a href="#midiaSubmenu" class="dropdown-toggle" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
+                        <i class="nav-icon ion-ios-play"></i>Materiais de Apoio
+                    </a>
+                    <ul class="collapse submenu" id="midiaSubmenu">
+                        <li>
+                            <a href="#">Vídeos</a>
+                        </li>
+                        <li>
+                            <a href="#">Artigos</a>
+                        </li>
+                    </ul>
+                </li>
+                <li class="nav-item menu">
+                    <a href="#testSubmenu" class="dropdown-toggle" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
+                        <i class="nav-icon ion-checkmark"></i>Provas
+                    </a>
+                    <ul class="collapse submenu" id="testSubmenu">
+                        <li>
+                            <a href="#">Minhas Provas</a>
+                        </li>
+                        <li>
+                            <a href="#">Nova</a>
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
 
-                            <div class="col-sm-3">
-                                <h5 class="m-t-0 m-b-1">LINKS</h5>
-                                <div style="line-height: 1.7;">
-                                    <a href="#">Sobre</a><br>
-                                    <a href="#">Principal</a><br>
-                                    <a href="#">Blog</a><br>
-                                    <a href="#">Contato</a><br>
-                                    <a href="#">Termos</a><br>
-                                    <a href="#">Privacidade</a>
-                                </div>
-                            </div>
+        <div id="main">
+            <div class="container-fluid">
+                {% block content %}{% endblock %}
 
-                            <!-- spacer -->
-                            <div class="m-t-4 visible-xs"></div>
-
-                            <div class="col-sm-3">
-                                <h5 class="m-t-0 m-b-1">CATEGORIAS</h5>
-                                <div style="line-height: 1.7;">
-                                    <a href="#">Educação</a><br>
-                                    <a href="#">Questões</a><br>
-                                    <a href="#">Provas</a><br>
-                                    <a href="#">Compartilhamento</a><br>
-                                    <a href="#">Filmes</a><br>
-                                    <a href="#">Conhecimento</a><br>
-                                </div>
-                            </div>
-
-                            <hr>
-
-                        </div>
-                    </div>
-                </div>
-            </footer>
-        {% endblock %}
-
-    {% block javascripts %}
-        {{ encore_entry_script_tags('app') }}
-        <script src="https://cdn.jsdelivr.net/npm/jquery-validation@1.19.0/dist/jquery.validate.js"></script>
-        {{ encore_entry_script_tags('pixel_admin') }}
-        {{ encore_entry_script_tags('way_points') }}
-        {{ encore_entry_script_tags('lazy_sizes') }}
-        {{ encore_entry_script_tags('landing') }}
-    {% endblock %}
-
+            </div>
+        </div>
     </body>
+{% endblock %}
+
+{% block javascripts %}
+    {{ encore_entry_script_tags('app') }}
+    {{ encore_entry_script_tags('lazy_sizes') }}
+    {{ encore_entry_script_tags('main') }}
+{% endblock %}
+
 </html>

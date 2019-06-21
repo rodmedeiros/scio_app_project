@@ -1,0 +1,159 @@
+body {
+  font-family: "Lato", sans-serif;
+}
+
+//SideBar
+
+.sidenav {
+  height: 100%;
+  width: 280px;
+  position: absolute;
+  z-index: 1;
+  top: 0;
+  left: 0;
+  background-color: #3d4a5d;
+  overflow-x: hidden;
+  transition: 0.5s;
+  padding-top: 0px;
+}
+
+.sidenav a {
+  text-decoration: none;
+  font-size: 15px;
+  color: #bbb;
+  display: block;
+  transition: 0.3s;
+  font-family: "Open Sans","Helvetica Neue",Helvetica,Arial,sans-serif;;
+}
+
+.sidenav a:hover {
+  color: #ffffff;
+}
+
+.sidenav .closebtn {
+  position: absolute;
+  top: 0;
+  right: 25px;
+  font-size: 36px;
+  margin-left: 50px;
+}
+
+
+#mySidenav{
+  margin-top: 50px;
+}
+
+#open{
+  padding-left: 0px;
+  padding-right: 30px;
+  position: static;
+}
+
+#open-icon{
+  padding-left: 0px;
+}
+
+.navbar-expand-lg{
+  background-color: #3d4a5d;
+}
+
+.navbar-expand-lg{
+  height: 50px
+}
+
+.nav-icon{
+  padding: 0 8px;
+  font-size: 15px;
+}
+
+.sidenav{
+  .nav-item{
+    padding: 0px;
+    border-bottom: #2d3745 0.03px solid;
+  }
+}
+
+.sidenav a{
+  padding: 10px;
+}
+
+.sidenav ul{
+  padding: 0;
+}
+
+.submenu a{
+  font-size: 14px;
+}
+
+.submenu li{
+  padding: 0 30px;
+  border-top: #2d3745 0.03px solid;
+}
+
+.submenu{
+  padding: 0;
+  margin: 0;
+  background-color: #354151;
+}
+
+//Principal
+@media screen and (max-height: 450px) {
+  .sidenav {padding-top: 15px;}
+  .sidenav a {font-size: 18px;}
+}
+
+#main {
+  transition: margin-left .5s;
+  padding-left: 30px;
+  padding-top: 30px;
+  margin-left: 280px;
+}
+
+//navbar
+
+#categories{
+  padding-left: 50px;
+  a{
+    font-size: 15px;
+    text-decoration: none;
+    padding: 0 40px;
+  }
+}
+
+#categories-dropdown{
+  margin-left: 290px;
+  border-left: 100px;
+  background-color: #f7f7f7;
+  border-top: 2px #f0ad4e solid;
+
+}
+
+.categories-items{
+  ul{
+    list-style-type: none;
+  }
+  a{
+    text-decoration: none;
+    color: dimgray;
+    font-size: 15px;
+    &:hover{
+      color: darkgray;
+    }
+  }
+  .categories-header{
+    font-size: 15px;
+  }
+  div{
+    border-left: lightgray 1px solid;
+    padding-right: 10px;
+
+  }
+}
+
+
+
+
+
+
+
+

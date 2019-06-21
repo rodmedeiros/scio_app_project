@@ -35,6 +35,7 @@ class RegistrationFormType extends AbstractType
                 'label' => 'Senha',
                 'first_options'  => array('label' => 'Senha', 'attr'=>['class'=>'form-control']),
                 'second_options' => array('label' => 'Repetir Senha', 'attr'=>['class'=>'form-control'],),
+                'empty_data' => '',
                 'constraints' => [
                     new NotBlank([
                         'message' => 'Por favor, escolha uma senha',
@@ -58,4 +59,6 @@ class RegistrationFormType extends AbstractType
         ]);
     }
 }
+
+
 

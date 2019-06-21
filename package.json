@@ -31,6 +31,7 @@
     "d3": "^5.9.2",
     "datatables.net": "^1.10.19",
     "font-awesome": "^4.7.0",
+    "jquery-validate": "^2.0.0",
     "moment": "^2.24.0"
   },
   "overrides": [

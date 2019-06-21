@@ -3,22 +3,35 @@
 {% block form_title %}Crie sua Conta{% endblock %}
 {% block form %}
 
-<div>
-    {{ form_start(form) }}
-    {{ form_row(form.username) }}
-    {{ form_row(form.email) }}
-    {{ form_row(form.plainPassword) }}
-                    {{ form_row(form.plainPassword.second) }}
+    <div>
+        {{ form_start(form) }}
+        {{ form_row(form.username) }}
+        {{ form_row(form.email) }}
+        {{ form_row(form.plainPassword.first) }}
+        {{ form_row(form.plainPassword.second) }}
+    </div><br />
 
-</div><br />
+    <label class="custom-control custom-checkbox">
+        <input id="terms" type="checkbox" class="custom-control-input" >
+        <span class="custom-control-indicator"></span>
+        Concordo com os <a href="#" target="_blank">Termos e Condições</a>
+    </label>
 
-<label class="custom-control custom-checkbox">
-    <input type="checkbox" class="custom-control-input">
-    <span class="custom-control-indicator"></span>
-    Concordo com os <a href="#" target="_blank">Termos e Condições</a>
-</label>
+    <button type="submit" class="btn btn-block btn-lg btn-primary m-t-3" disabled="true">Criar</button>
+    {{ form_end(form) }}
 
-<button type="submit" class="btn btn-block btn-lg btn-primary m-t-3">Criar</button>
-{{ form_end(form) }}
-
+{% endblock %}
+{% block javascripts %}
+{{ parent() }}
+<script>
+    $(document).ready(function() {
+      $('#terms').click(function () {
+          if($('input[type="checkbox"]').prop('checked') == true){
+              $('button').prop('disabled',false);
+          }else{
+              $('button').prop('disabled',true);
+          }
+      });
+    });
+</script>
 {% endblock %}
