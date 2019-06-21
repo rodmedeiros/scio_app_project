@@ -42,8 +42,12 @@ class DefaultController extends AbstractController
 
 //        $lastActivities = $this->get('repository.dashboard')->lastActivities();
 
+        $loremImpsum = "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been 
+                            the industry's standard dummy text ever since the 1500s,";
+
         return $this->render('default/index.html.twig', [
             'user' => $user,
+            'lorem_ipsum' => $loremImpsum,
         ]);
     }
 }

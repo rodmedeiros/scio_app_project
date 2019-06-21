@@ -125,7 +125,10 @@ body {
   border-left: 100px;
   background-color: #f7f7f7;
   border-top: 2px #f0ad4e solid;
-
+  z-index: 1;
+  -webkit-border-radius: 1px;
+  -moz-border-radius: 1px;
+  border-radius: 1px;
 }
 
 .categories-items{

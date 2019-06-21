@@ -11,7 +11,6 @@ import $ from 'jquery';
 import 'bootstrap';
 import 'jquery-scrollTo';
 
-
 global.$ = $;
 
 // require jQuery normally
