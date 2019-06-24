@@ -10,6 +10,7 @@ import '../css/app.scss';
 import $ from 'jquery';
 import 'bootstrap';
 import 'jquery-scrollTo';
+import 'select2';
 
 global.$ = $;
 

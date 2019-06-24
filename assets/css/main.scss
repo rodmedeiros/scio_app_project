@@ -153,7 +153,9 @@ body {
   }
 }
 
-
+.select2-container *:focus {
+  outline: none;
+}
 
 
 

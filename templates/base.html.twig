@@ -120,7 +120,7 @@
                     </a>
                     <ul class="collapse submenu" id="accountSubmenu">
                         <li>
-                            <a href="#">Perfil</a>
+                            <a href="{{ path('profile_show', {'id': app.user.id}) }}">Perfil</a>
                         </li>
                         <li>
                             <a href="#">Avaliações</a>
@@ -224,11 +224,12 @@
         </div>
 
         <div id="main">
+            <div class="col-md-12">
+               {{ include('default/_flash_messages.html.twig') }}
+            </div>
             <div class="container-fluid">
                 {% block content %}
-                    {% block header %}{% endblock %}
                 {% endblock %}
-
             </div>
         </div>
     </body>

@@ -1,0 +1,157 @@
+{% extends 'base.html.twig' %}
+
+{% block content %}
+
+    <div class="row">
+        <div class="col-md-3 profile-photo">
+            <img src="{{ asset('build/images/avatars/eu.jpeg') }}" class="img-thumbnail" alt="Cinque Terre" width="304" height="236">
+            <div style="margin-top: 10px">
+                <h5 class="text-default">{{ profile.username | capitalize }}</h5>
+            </div>
+        </div>
+        <div class="col-md-9">
+            <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
+                <li class="nav-item">
+                    <a class="nav-link active" id="pills-general-tab" data-toggle="pill" href="#pills-general" role="tab" aria-controls="pills-general" aria-selected="true">Informações Pessoais</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" id="pills-evaluations-tab" data-toggle="pill" href="#pills-evaluations" role="tab" aria-controls="pills-evaluations" aria-selected="false">Minhas Avaliações</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" id="pills-contact-tab" data-toggle="pill" href="#pills-contact" role="tab" aria-controls="pills-contact" aria-selected="false">Indicações</a>
+                </li>
+            </ul>
+            <hr>
+            <div class="tab-content" id="pills-tabContent">
+                <div class="tab-pane fade show active" id="pills-general" role="tabpanel" aria-labelledby="pills-general-tab">
+                    <!--TODO refatorar como partial -->
+                    <div class="row">
+                        <div class="col-md-12 col-xs-12">
+                            <div class="card">
+                                <div class="card-header">
+                                    <span>Dados Gerais</span>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-12 col-xs-12">
+                                        <div class="card-body">
+                                            <table>
+                                                <thead>
+                                                <table class="table">
+                                                    <tbody>
+                                                    <tr>
+                                                        <td class="col-md-2">Nome Completo</th>
+                                                        <td class="col-md-10">
+                                                            {{ profile.name | capitalize }} {{ profile.LastName | capitalize }}
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td class="col-md-2">Email</th>
+                                                        <td class="col-md-10 pull">{{ profile.email }}</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td class="col-md-2">Username</th>
+                                                        <td class="col-md-10 pull">{{ profile.username }}</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td class="col-md-2">Disciplina</th>
+                                                        <td class="col-md-10 pull">{{ profile.subject | capitalize ?: "<span class='text-warning'>Não cadatrado</span>" }} </td>
+                                                    </tr>
+
+                                                    </tbody>
+                                                </table>
+                                                </thead>
+                                                <a href="{{ path('profile_edit', {'id': profile.id}) }}" class="btn btn-primary">Editar Perfil</a>
+                                            </table>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div><br/>
+                    <!--School Informations-->
+                    <div class="row">
+                        <div class="col-md-12 col-xs-12">
+                            <div class="card">
+                                <div class="card-header">
+                                    <span>Minha Escola</span>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-12 col-xs-12">
+                                        <div class="card-body">
+                                            {% if profile.school %}
+                                            <table>
+                                                <thead>
+                                                <table class="table">
+                                                    <tbody>
+                                                    <tr>
+                                                        <td class="col-md-2">Nome</th>
+                                                        <td class="col-md-10">{{ profile.school.name }}</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td class="col-md-2">Diretor(a)</th>
+                                                        <td class="col-md-10 pull">{{ profile.school.principal }}</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td class="col-md-2">Email</th>
+                                                        <td class="col-md-10 pull">{{ profile.school.email }}</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td class="col-md-2">Telefone</th>
+                                                        <td class="col-md-10 pull">{{ profile.school.telephone }}</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td class="col-md-2">Endereço</th>
+                                                        <td class="col-md-10 pull">
+                                                            {{ profile.school.address.street ? :'s/rua' }}, {{ profile.school.address.district? :'s/bairro' }}.
+                                                            {{ profile.school.address.city? :'s/cidade' }}-{{ profile.school.address.state }}
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td class="col-md-2">Rede</th>
+                                                        <td class="col-md-10 pull"></td>
+                                                    </tr>
+                                                    </tbody>
+                                                </table>
+                                                </thead>
+                                                <a href="#" class="btn btn-primary">Editar Escola</a>
+                                            </table>
+                                            {% else %}
+                                            <div class="alert alert-warning alert-dismissible fade show">
+                                                <h4 class="alert-heading"><i class="fa fa-warning"></i> Atenção</h4>
+                                                <p>
+                                                    Você não possui escola cadastrada. Pedimos que, por favor, defina a escola em que trabalha
+                                                    para que possamos realizar a verificação de sua alocação.
+                                                </p>
+                                                <p>
+                                                    O <strong>ScioApp</strong> é construído por e feito para professores. Portanto, é de suma
+                                                    importância que defina sua escola.
+                                                </p>
+                                                <hr>
+                                                <p class="mb-0">Para inserir a escola em que trabalha, favor clicar no link abaixo.</p><br/>
+                                                <p>
+                                                    <a href="{{ path('profile_school', { 'id': profile.id }) }}">
+                                                        Definir Escola
+                                                    </a>
+                                                </p>
+
+                                            </div>
+                                            {% endif %}
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div><br/>
+                <!--TODO refatorar como partial -->
+
+
+                <div class="tab-pane fade" id="pills-evaluations" role="tabpanel" aria-labelledby="pills-evaluations-tab">...</div>
+                <div class="tab-pane fade" id="pills-contact" role="tabpanel" aria-labelledby="pills-contact-tab">...</div>
+
+            </div>
+        </div>
+    </div>
+
+{% endblock %}

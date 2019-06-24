@@ -11,3 +11,5 @@ $('#open').click(function () {
         $('.sidenav li').hide();
     }
 });
+
+$('.select2').select2();

@@ -50,4 +50,5 @@ class DefaultController extends AbstractController
             'lorem_ipsum' => $loremImpsum,
         ]);
     }
+
 }
