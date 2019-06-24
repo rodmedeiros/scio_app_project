@@ -113,7 +113,7 @@
                                                     </tbody>
                                                 </table>
                                                 </thead>
-                                                <a href="#" class="btn btn-primary">Editar Escola</a>
+                                                <a href="{{ path('school_edit', { 'id': profile.school.id  }) }}" class="btn btn-primary">Editar Escola</a>
                                             </table>
                                             {% else %}
                                             <div class="alert alert-warning alert-dismissible fade show">

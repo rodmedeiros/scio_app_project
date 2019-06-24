@@ -1,0 +1,19 @@
+{% extends 'base.html.twig' %}
+
+
+{% block form %}
+    {% block content %}
+        {% form_theme form 'bootstrap_4_layout.html.twig' %}
+        <div class="card-body col-md-10">
+            <div class="h3">
+                <h3 class="text-dark">Editar Escola</h3>
+            </div><br/>
+            {{ form_start(form) }}
+            {{ form_widget(form) }}
+            <button type="submit" class="btn btn-info mt-2">
+                Salvar
+            </button>
+            {{ form_end(form) }}
+        </div>
+    {% endblock %}
+{% endblock %}
