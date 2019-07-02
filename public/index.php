@@ -20,6 +20,11 @@ if ($trustedHosts = $_SERVER['TRUSTED_HOSTS'] ?? $_ENV['TRUSTED_HOSTS'] ?? false
     Request::setTrustedHosts([$trustedHosts]);
 }
 
+// The check is to ensure we don't use .env in production
+if (!isset($_SERVER['APP_ENV'])) {
+    (new Dotenv())->load(__DIR__.'/../.env');
+}
+
 $kernel = new Kernel($_SERVER['APP_ENV'], (bool) $_SERVER['APP_DEBUG']);
 $request = Request::createFromGlobals();
 $response = $kernel->handle($request);
