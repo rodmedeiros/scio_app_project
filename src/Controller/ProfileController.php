@@ -2,26 +2,22 @@
 
 namespace App\Controller;
 
-use App\Form\AddSchoolToProfileType;
-use App\Form\ProfileFormType;
-use Symfony\Component\HttpFoundation\Request;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
-use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 use Symfony\Component\Routing\Annotation\Route;
+use App\Entity\Profile;
 use App\Entity\User;
+use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\Response;
+use App\Form\ProfileType;
 
-
-/**
- * ProfileController
- */
-Class ProfileController extends AbstractController
+class ProfileController extends AbstractController
 {
     /**
      * List profile informations
      *
      * @Route("/perfil/{id}", name="profile_show")
      */
-    public function show(Request $request, User $profile)
+    public function show(Request $request, Profile $profile)
     {
 
         return $this->render('profile/show.html.twig', [
@@ -30,13 +26,40 @@ Class ProfileController extends AbstractController
     }
 
     /**
-     * List profile informations
+     *
+     * @Route("usuario/{id}/perfil/criar", name="profile_new", methods={"POST", "GET"})
+     */
+    public function new(Request $request, User $user)
+    {
+        $profile = new Profile();
+        $profile->setUser($user);
+        $form = $this->createForm(ProfileType::class, $profile);
+        $form->handleRequest($request);
+        $em = $this->getDoctrine()->getManager();
+
+        try{
+            if ($form->isSubmitted() && $form->isValid()) {
+                $em->persist($profile);
+                $em->flush();
+                $this->addFlash('success', 'Perfil criado com sucesso!');
+                return $this->redirectToRoute('site_home');
+            }
+        }catch (\Exception $e){
+            $this->addFlash('error', 'Não foi possível editar seu usuário:'.$e);
+        }
+
+        return $this->render('profile/new.html.twig', [
+            'form' => $form->createView(),
+        ]);
+    }
+
+    /**
      *
      * @Route("/perfil/editar/{id}", name="profile_edit", methods={"POST", "GET"})
      */
-    public function edit(Request $request, User $profile)
+    public function edit(Request $request, Profile $profile)
     {
-        $form = $this->createForm(ProfileFormType::class, $profile);
+        $form = $this->createForm(ProfileType::class, $profile);
         $form->handleRequest($request);
         $em = $this->getDoctrine()->getManager();
 
@@ -62,7 +85,7 @@ Class ProfileController extends AbstractController
      *
      * @Route("/perfil/add_escola/{id}", name="profile_school", methods={"POST", "GET"})
      */
-    public function setProfileSchool(Request $request, User $profile)
+    public function setProfileSchool(Request $request, Profile $profile)
     {
         $form = $this->createForm(AddSchoolToProfileType::class, $profile);
         $form->handleRequest($request);
@@ -84,4 +107,5 @@ Class ProfileController extends AbstractController
             'form' => $form->createView(),
         ]);
     }
+
 }

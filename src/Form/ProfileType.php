@@ -4,21 +4,19 @@ namespace App\Form;
 
 use App\Entity\Profile;
 use Symfony\Component\Form\AbstractType;
-use Symfony\Component\Form\Extension\Core\Type\EmailType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
-class AddSchoolToProfileType extends AbstractType
+class ProfileType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('school', null, [
-                'label' => 'Escolas',
-                'attr' => [
-                    'class' => '',
-                ]
-            ]);
+            ->add('firstName')
+            ->add('lastName')
+            ->add('gender')
+            ->add('subject')
+            ->add('school')
         ;
     }
 

@@ -3,6 +3,7 @@
 
 namespace App\Controller;
 
+use Doctrine\ORM\Mapping\Entity;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
@@ -25,6 +26,10 @@ class DefaultController extends AbstractController
 
         $user = $this->getUser();
 
+        if(!$user->getProfile()){
+            $this->redirectToRoute('profile_new');
+        }
+
 //        $competence = ($request->query->has('competence')) ? $request->query->get('competence') : date('m/Y');
 //        $competence = \DateTime::createFromFormat('m/Y', $competence);
 
@@ -42,12 +47,15 @@ class DefaultController extends AbstractController
 
 //        $lastActivities = $this->get('repository.dashboard')->lastActivities();
 
+//        $profile = $em->getRepository(Entity::Profile)->findOneBy(['user'=>$user]);
+
         $loremImpsum = "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been 
                             the industry's standard dummy text ever since the 1500s,";
 
         return $this->render('default/index.html.twig', [
             'user' => $user,
             'lorem_ipsum' => $loremImpsum,
+//            'profile' => $profile,
         ]);
     }
 

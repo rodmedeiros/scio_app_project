@@ -2,6 +2,8 @@
 
 namespace App\Entity;
 
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -37,13 +39,6 @@ class School
     private $telephone;
 
     /**
-     * @var User
-     *
-     * @ORM\OneToMany(targetEntity="User", cascade={"persist", "refresh"}, mappedBy="school", fetch="EXTRA_LAZY")
-     */
-    private $users;
-
-    /**
      * @var SchoolAddress
      *
      * @ORM\OneToOne(targetEntity="SchoolAddress", cascade={"persist", "refresh"}, inversedBy="school", fetch="EXTRA_LAZY")
@@ -51,10 +46,14 @@ class School
     private $address;
 
     /**
-     * @ORM\Column(type="string", length=255, nullable=true)
+     * @ORM\OneToMany(targetEntity="App\Entity\Profile", mappedBy="school")
      */
-    private $schollar;
+    private $profiles;
 
+    public function __construct()
+    {
+        $this->profiles = new ArrayCollection();
+    }
 
     //Getters, Setters and Methods
 
@@ -134,6 +133,37 @@ class School
     public function setAddress($address): void
     {
         $this->address = $address;
+    }
+
+    /**
+     * @return Collection|Profile[]
+     */
+    public function getProfiles(): Collection
+    {
+        return $this->profiles;
+    }
+
+    public function addProfile(Profile $profile): self
+    {
+        if (!$this->profiles->contains($profile)) {
+            $this->profiles[] = $profile;
+            $profile->setSchool($this);
+        }
+
+        return $this;
+    }
+
+    public function removeProfile(Profile $profile): self
+    {
+        if ($this->profiles->contains($profile)) {
+            $this->profiles->removeElement($profile);
+            // set the owning side to null (unless already changed)
+            if ($profile->getSchool() === $this) {
+                $profile->setSchool(null);
+            }
+        }
+
+        return $this;
     }
 
 }

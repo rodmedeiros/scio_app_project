@@ -2,9 +2,10 @@
 
 namespace App\Entity;
 
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
-use Symfony\Component\Security\Core\User\UserInterface;
 use Symfony\Component\Validator\Constraints as Assert;
 
 
@@ -30,9 +31,14 @@ class Subject
     private $name;
 
     /**
-     * @ORM\OneToMany(targetEntity="App\Entity\User", mappedBy="subject")
+     * @ORM\OneToMany(targetEntity="App\Entity\Profile", mappedBy="subject")
      */
-    protected $users;
+    private $profiles;
+
+    public function __construct()
+    {
+        $this->profiles = new ArrayCollection();
+    }
 
     //Getters, Setters and Methods
 
@@ -79,6 +85,37 @@ class Subject
     public function getItems()
     {
         return $this->items;
+    }
+
+    /**
+     * @return Collection|Profile[]
+     */
+    public function getProfiles(): Collection
+    {
+        return $this->profiles;
+    }
+
+    public function addProfile(Profile $profile): self
+    {
+        if (!$this->profiles->contains($profile)) {
+            $this->profiles[] = $profile;
+            $profile->setSubject($this);
+        }
+
+        return $this;
+    }
+
+    public function removeProfile(Profile $profile): self
+    {
+        if ($this->profiles->contains($profile)) {
+            $this->profiles->removeElement($profile);
+            // set the owning side to null (unless already changed)
+            if ($profile->getSubject() === $this) {
+                $profile->setSubject(null);
+            }
+        }
+
+        return $this;
     }
 
 }

@@ -6,7 +6,7 @@
         <div class="col-md-3 profile-photo">
             <img src="{{ asset('build/images/avatars/eu.jpeg') }}" class="img-thumbnail" alt="Cinque Terre" width="304" height="236">
             <div style="margin-top: 10px">
-                <h5 class="text-default">{{ profile.username | capitalize }}</h5>
+                <h5 class="text-default">{{ profile.user.username | capitalize }}</h5>
             </div>
         </div>
         <div class="col-md-9">
@@ -41,20 +41,24 @@
                                                     <tr>
                                                         <td class="col-md-2">Nome Completo</th>
                                                         <td class="col-md-10">
-                                                            {{ profile.name | capitalize }} {{ profile.LastName | capitalize }}
+                                                            {{ profile.firstName | capitalize }} {{ profile.LastName | capitalize }}
                                                         </td>
                                                     </tr>
                                                     <tr>
                                                         <td class="col-md-2">Email</th>
-                                                        <td class="col-md-10 pull">{{ profile.email }}</td>
+                                                        <td class="col-md-10 pull">{{ profile.user.email }}</td>
                                                     </tr>
                                                     <tr>
-                                                        <td class="col-md-2">Username</th>
-                                                        <td class="col-md-10 pull">{{ profile.username }}</td>
+                                                        <td class="col-md-2">Sexo</th>
+                                                        <td class="col-md-10 pull">{{ profile.gender|trans }}</td>
                                                     </tr>
                                                     <tr>
                                                         <td class="col-md-2">Disciplina</th>
                                                         <td class="col-md-10 pull">{{ profile.subject | capitalize ?: "<span class='text-warning'>Não cadatrado</span>" }} </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td class="col-md-2">Escola</th>
+                                                        <td class="col-md-10 pull">{{ profile.school ?: "<span class='text-warning'>Não cadatrado</span>" }} </td>
                                                     </tr>
 
                                                     </tbody>

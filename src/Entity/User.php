@@ -32,56 +32,25 @@ class User implements UserInterface
      * @ORM\Column(type="string", length=255)
      * @Assert\NotBlank()
      */
-    private $name;
-
-    /**
-     * @ORM\Column(type="string", length=255)
-     * @Assert\NotBlank()
-     */
-    private $lastName;
-
-    /**
-     * @ORM\Column(type="string", length=255)
-     * @Assert\NotBlank()
-     */
     private $username;
 
     /**
-     * @ORM\Column(nullable=true)
      * @Assert\Length(max=4096)
      */
     private $plainPassword;
 
     /**
-     * @Assert\Image(
-     *     minWidth = 200,
-     *     maxWidth = 400,
-     *     minHeight = 200,
-     *     maxHeight = 400
-     * )
-     */
-    private $profileImage;
-
-
-    /**
-     * @ORM\ManyToOne(targetEntity="App\Entity\Subject", inversedBy="users")
-     * @ORM\JoinColumn(nullable=true)
-     */
-    protected $subject;
-
-    /**
-     * @ORM\ManyToOne(targetEntity="School", inversedBy="users", cascade={"persist"}, fetch="EXTRA_LAZY")
-     */
-    protected $school;
-
-
-    /**
      * The below length depends on the "algorithm" you use for encoding
      * the password, but this works well with bcrypt.
      *
-     * @ORM\Column(type="string", length=128)
+     * @ORM\Column(type="string", length=128,nullable=true)
      */
     private $password;
+
+    /**
+     * @ORM\OneToOne(targetEntity="Profile", mappedBy="user")
+     */
+    private $profile;
 
     /**
      * @ORM\Column(type="array")
@@ -126,70 +95,17 @@ class User implements UserInterface
     /**
      * @return mixed
      */
-    public function getName()
+    public function getProfile()
     {
-        return $this->name;
+        return $this->profile;
     }
 
     /**
-     * @param mixed $name
+     * @param mixed $profile
      */
-    public function setName($name): void
+    public function setProfile($profile): void
     {
-        $this->name = $name;
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getLastName()
-    {
-        return $this->lastName;
-    }
-
-    /**
-     * @param mixed $lastName
-     */
-    public function setLastName($lastName): void
-    {
-        $this->lastName = $lastName;
-    }
-
-    public function getPlainPassword()
-    {
-        return $this->plainPassword;
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getProfileImage()
-    {
-        return $this->profileImage;
-    }
-
-    /**
-     * @param mixed $profileImage
-     */
-    public function setProfileImage($profileImage): void
-    {
-        $this->profileImage = $profileImage;
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getSubject()
-    {
-        return $this->subject;
-    }
-
-    /**
-     * @param mixed $subject
-     */
-    public function setSubject($subject): void
-    {
-        $this->subject = $subject;
+        $this->profile = $profile;
     }
 
     public function setPlainPassword($plainPassword)
@@ -217,23 +133,10 @@ class User implements UserInterface
         return $this->roles;
     }
 
-    /**
-     * @return mixed
-     */
-    public function getSchool()
-    {
-        return $this->school;
-    }
 
-    /**
-     * @param mixed $school
-     */
-    public function setSchool($school): void
-    {
-        $this->school = $school;
-    }
 
     public function eraseCredentials()
     {
     }
+
 }
