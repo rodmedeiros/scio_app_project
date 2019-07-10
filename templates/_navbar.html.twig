@@ -1,0 +1,38 @@
+<nav class="navbar navbar-expand-lg navbar-light bg-light sticky-top">
+    <div class="collapse navbar-collapse" id="navbar">
+
+        <ul class="navbar-nav mr-auto">
+            <li class="nav-item" id="open"><a id="open-icon">Menu &#9776; </a></li>
+            <li class="nav-item">
+                <a class="navbar-brand" href="{{ path('dashboard') }}">
+                    <span>ScioApp</span>
+                </a>
+            </li>
+            <li class="px-nav-item menu" id="categories">
+                <a href="#categories-dropdown" data-toggle="collapse" aria-expanded="false">
+                    Categorias
+                </a>
+            </li>
+        </ul>
+        <ul class="nav navbar-nav navbar-right">
+            <li class="nav-item dropdown-header">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <span class="hidden-md">{{ app.user.username }}</span>
+                </a>
+                <div class="dropdown-menu dropdown-menu-right">
+                    <button class="dropdown-item">
+                        <a href="#"   class="text-dark">
+                            <i class="dropdown-icon fa fa-envelope"></i>&nbsp;&nbsp;Mensagens
+                        </a>
+                    </button>
+                    <div class="dropdown-divider"></div>
+                    <button class="dropdown-item" type="button">
+                        <a href="{{ path('app_logout') }}"  class="text-dark">
+                            <i class="dropdown-icon fa fa-power-off"></i>&nbsp;&nbsp;Sair
+                        </a>
+                    </button>
+                </div>
+            </li>
+        </ul>
+    </div>
+</nav>

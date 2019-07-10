@@ -35,9 +35,16 @@ class Subject
      */
     private $profiles;
 
+    /**
+     * @ORM\OneToMany(targetEntity="App\Entity\Content", mappedBy="subject")
+     */
+    private $contents;
+
+    //Methods
     public function __construct()
     {
         $this->profiles = new ArrayCollection();
+        $this->contents = new ArrayCollection();
     }
 
     //Getters, Setters and Methods
@@ -112,6 +119,37 @@ class Subject
             // set the owning side to null (unless already changed)
             if ($profile->getSubject() === $this) {
                 $profile->setSubject(null);
+            }
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Content[]
+     */
+    public function getContents(): Collection
+    {
+        return $this->contents;
+    }
+
+    public function addContent(Content $content): self
+    {
+        if (!$this->contents->contains($content)) {
+            $this->contents[] = $content;
+            $content->setSubject($this);
+        }
+
+        return $this;
+    }
+
+    public function removeContent(Content $content): self
+    {
+        if ($this->contents->contains($content)) {
+            $this->contents->removeElement($content);
+            // set the owning side to null (unless already changed)
+            if ($content->getSubject() === $this) {
+                $content->setSubject(null);
             }
         }
 

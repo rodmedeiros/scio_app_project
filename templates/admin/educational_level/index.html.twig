@@ -1,0 +1,30 @@
+{% extends 'base.html.twig' %}
+
+{% block content %}
+
+<div class="example-wrapper">
+
+    <div class="container-fluid">
+        <h2 class="m-b-4">Segmentos</h2>
+        <table class="table table-bordered">
+            <thead class="thead-light">
+            <tr>
+                <th>Segmento</th>
+                <th>Ações</th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for level in levels %}
+                <tr>
+                    <td>{{ level.name | capitalize }}</td>
+                   <td>
+                        <a href="{{ path('level_edit', {'id': level.id}) }}" class="btn btn-info">Editar</a>
+                        <a href="{{ path('level_delete', {'id': level.id}) }}" class="btn btn-danger">Excluir</a>
+                    </td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+        <a href="{{ path('level_new') }}" class="btn btn-outline-info">Novo</a>
+    </div>
+{% endblock %}

@@ -27,7 +27,7 @@ class DefaultController extends AbstractController
         $user = $this->getUser();
 
         if(!$user->getProfile()){
-            $this->redirectToRoute('profile_new');
+            $this->redirectToRoute('profile_new', ['id' => $user->getId()]);
         }
 
 //        $competence = ($request->query->has('competence')) ? $request->query->get('competence') : date('m/Y');

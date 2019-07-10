@@ -42,7 +42,7 @@ class Profile
     private $school;
 
     /**
-     * @ORM\OneToOne(targetEntity="App\Entity\User", cascade={"persist", "remove"})
+     * @ORM\OneToOne(targetEntity="App\Entity\User", cascade={"persist", "remove"}, inversedBy="profile")
      * @ORM\JoinColumn(nullable=false)
      */
     private $user;

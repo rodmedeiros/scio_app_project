@@ -1,0 +1,34 @@
+{% extends 'base.html.twig' %}
+
+{% block content %}
+
+<div class="example-wrapper">
+
+    <div class="container-fluid">
+        <h2 class="m-b-4">Conteúdos</h2>
+        <table class="table table-bordered">
+            <thead class="thead-light">
+            <tr>
+                <th>Conteúdo</th>
+                <th>Disciplina</th>
+                <th>Série</th>
+                <th>Ações</th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for content in contents %}
+                <tr>
+                    <td>{{ content.name }}</td>
+                    <td>{{ content.subject | capitalize }}</td>
+                    <td>{{ content.grade | join(', ')}}</td>
+                    <td>
+                        <a href="{{ path('content_edit', {'id': content.id}) }}" class="btn btn-info">Editar</a>
+                        <a href="{{ path('content_delete', {'id': content.id}) }}" class="btn btn-danger">Excluir</a>
+                    </td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+        <a href="{{ path('content_new') }}" class="btn btn-outline-info">Novo</a>
+    </div>
+{% endblock %}

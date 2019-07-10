@@ -12,4 +12,4 @@ $('#open').click(function () {
     }
 });
 
-$('.select2').select2();
+$('.select').select2();

@@ -1,0 +1,110 @@
+<div id="mySidenav" class="sidenav">
+    <ul>
+        <li class="nav-item menu">
+            <a href="#accountSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
+                <i class="nav-icon icon ion-person"></i>Minha Conta
+            </a>
+            <ul class="collapse submenu" id="accountSubmenu">
+                <li>
+                    <a href="{{ path('profile_show', {'id': app.user.profile.id}) }}">Perfil</a>
+                </li>
+                <li>
+                    <a href="#">Avaliações</a>
+                </li>
+                <li>
+                    <a href="#">Editar</a>
+                </li>
+            </ul>
+        </li>
+        <li class="nav-item menu">
+            <a href="#exercisesSubmenu" class="dropdown-toggle" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
+                <i class="nav-icon ion-ios-list"></i> Questões
+            </a>
+            <ul class="collapse submenu" id="exercisesSubmenu">
+                <li>
+                    <a href="#">Minhas Questões</a>
+                </li>
+                <li>
+                    <a href="#">Pesquisar</a>
+                </li>
+                <li>
+                    <a href="#">Nova</a>
+                </li>
+            </ul>
+        </li>
+        <li class="nav-item menu">
+            <a href="#slidesSubmenu" class="dropdown-toggle" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
+                <i class="nav-icon ion-android-image"></i>Slides
+            </a>
+            <ul class="collapse submenu" id="slidesSubmenu">
+                <li>
+                    <a href="#">Meus Slides</a>
+                </li>
+                <li>
+                    <a href="#">Pesquisar</a>
+                </li>
+                <li>
+                    <a href="#">Novo</a>
+                </li>
+            </ul>
+        </li>
+        <li class="nav-item menu">
+            <a href="#projectsSubmenu" class="dropdown-toggle" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
+                <i class="nav-icon ion-android-document"></i>Projetos
+            </a>
+            <ul class="collapse submenu" id="projectsSubmenu">
+                <li>
+                    <a href="#">Meus Projetos</a>
+                </li>
+                <li>
+                    <a href="#">Pesquisar</a>
+                </li>
+                <li>
+                    <a href="#">Novo</a>
+                </li>
+            </ul>
+        </li>
+        <li class="nav-item menu">
+            <a href="#plainsSubmenu" class="dropdown-toggle" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
+                <i class="nav-icon ion-ios-keypad"></i>Planos de Aula
+            </a>
+            <ul class="collapse submenu" id="plainsSubmenu">
+                <li>
+                    <a href="#">Meus Planos de aula</a>
+                </li>
+                <li>
+                    <a href="#">Pesquisar</a>
+                </li>
+                <li>
+                    <a href="#">Novo</a>
+                </li>
+            </ul>
+        </li>
+        <li class="nav-item menu">
+            <a href="#midiaSubmenu" class="dropdown-toggle" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
+                <i class="nav-icon ion-ios-play"></i>Materiais de Apoio
+            </a>
+            <ul class="collapse submenu" id="midiaSubmenu">
+                <li>
+                    <a href="#">Vídeos</a>
+                </li>
+                <li>
+                    <a href="#">Artigos</a>
+                </li>
+            </ul>
+        </li>
+        <li class="nav-item menu">
+            <a href="#testSubmenu" class="dropdown-toggle" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
+                <i class="nav-icon ion-checkmark"></i>Provas
+            </a>
+            <ul class="collapse submenu" id="testSubmenu">
+                <li>
+                    <a href="#">Minhas Provas</a>
+                </li>
+                <li>
+                    <a href="#">Nova</a>
+                </li>
+            </ul>
+        </li>
+    </ul>
+</div>

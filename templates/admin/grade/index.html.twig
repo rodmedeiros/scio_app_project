@@ -1,0 +1,32 @@
+{% extends 'base.html.twig' %}
+
+{% block content %}
+
+<div class="example-wrapper">
+
+    <div class="container-fluid">
+        <h2 class="m-b-4">Séries</h2>
+        <table class="table table-bordered">
+            <thead class="thead-light">
+            <tr>
+                <th>Série</th>
+                <th>Ensino</th>
+                <th>Ações</th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for grade in grades %}
+                <tr>
+                    <td>{{ grade.degree }}º</td>
+                    <td>E. {{ grade.level }}</td>
+                    <td>
+                        <a href="{{ path('grade_edit', {'id': grade.id}) }}" class="btn btn-info">Editar</a>
+                        <a href="{{ path('grade_delete', {'id': grade.id}) }}" class="btn btn-danger">Excluir</a>
+                    </td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+        <a href="{{ path('grade_new') }}" class="btn btn-outline-info">Novo</a>
+    </div>
+{% endblock %}

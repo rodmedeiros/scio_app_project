@@ -27,7 +27,7 @@ class ProfileController extends AbstractController
 
     /**
      *
-     * @Route("usuario/{id}/perfil/criar", name="profile_new", methods={"POST", "GET"})
+     * @Route("usuario/{id}/perfil/novo", name="profile_new", methods={"POST", "GET"})
      */
     public function new(Request $request, User $user)
     {

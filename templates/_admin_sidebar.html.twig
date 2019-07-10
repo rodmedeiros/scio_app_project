@@ -1,0 +1,70 @@
+<div id="mySidenav" class="sidenav">
+    <ul>
+        <li class="nav-item menu">
+            <a href="#accountSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
+                <i class="nav-icon icon ion-person"></i>Usuarios
+            </a>
+            <ul class="collapse submenu" id="accountSubmenu">
+                <li>
+                    <a href="{{ path('profile_show', {'id': app.user.profile.id}) }}">Usuarios</a>
+                </li>
+                <li>
+                    <a href="#">Perfis</a>
+                </li>
+            </ul>
+        </li>
+        <li class="nav-item menu">
+            <a href="#" aria-expanded="false">
+                <i class="nav-icon ion-ios-list"></i> Questões
+            </a>
+        </li>
+        <li class="nav-item menu">
+            <a href="#">
+                <i class="nav-icon ion-android-image"></i>Slides
+            </a>
+        </li>
+        <li class="nav-item menu">
+            <a href="#">
+                <i class="nav-icon ion-android-document"></i>Projetos
+            </a>
+        </li>
+        <li class="nav-item menu">
+            <a href="#">
+                <i class="nav-icon ion-ios-keypad"></i>Planos de Aula
+            </a>
+        </li>
+        <li class="nav-item menu">
+            <a href="#midiaSubmenu" class="dropdown-toggle" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
+                <i class="nav-icon ion-ios-play"></i>Materiais de Apoio
+            </a>
+            <ul class="collapse submenu" id="midiaSubmenu">
+                <li>
+                    <a href="#">Vídeos</a>
+                </li>
+                <li>
+                    <a href="#">Artigos</a>
+                </li>
+            </ul>
+        </li>
+        <li class="nav-item menu">
+            <a href="#">
+                <i class="nav-icon ion-checkmark"></i>Provas
+            </a>
+        </li>
+        <li class="nav-item menu">
+            <a href="{{ path('contents') }}">
+                <i class="nav-icon ion-checkmark"></i>Conteúdos
+            </a>
+        </li>
+        <li class="nav-item menu">
+            <a href="{{ path('grades') }}">
+                <i class="nav-icon ion-checkmark"></i>Séries
+            </a>
+        </li>
+        <li class="nav-item menu">
+            <a href="{{ path('levels') }}">
+                <i class="nav-icon ion-checkmark"></i>Segmento
+            </a>
+        </li>
+    </ul>
+</div>
