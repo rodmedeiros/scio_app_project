@@ -27,7 +27,7 @@ class Grade
      * @ORM\ManyToOne(targetEntity="App\Entity\EducationalLevel",
      *      inversedBy="grades",
      *      fetch="EXTRA_LAZY",
-     *      cascade={"persist", "remove"}
+     *      cascade={"persist", "refresh"}
      *     )
      * @ORM\JoinColumn(nullable=false)
      */
