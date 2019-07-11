@@ -1,0 +1,30 @@
+{% extends 'base.html.twig' %}
+
+{% block content %}
+
+<div class="example-wrapper">
+
+    <div class="container-fluid">
+        <h2 class="m-b-4">Disciplinas</h2>
+        <table class="table table-bordered">
+            <thead class="thead-light">
+            <tr>
+                <th>Disciplina</th>
+                <th>Ações</th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for subject in subjects %}
+                <tr>
+                    <td>{{ subject.name }}</td>
+                    <td>
+                        <a href="{{ path('subject_edit', {'id': subject.id}) }}" class="btn btn-info">Editar</a>
+                        <a href="{{ path('subject_delete', {'id': subject.id}) }}" class="btn btn-danger">Excluir</a>
+                    </td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+        <a href="{{ path('subject_new') }}" class="btn btn-outline-info">Novo</a>
+    </div>
+{% endblock %}
