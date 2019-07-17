@@ -13,3 +13,15 @@ $('#open').click(function () {
 });
 
 $('.select').select2();
+
+$(document).ready(function() {
+    $('.summernote').summernote({
+        height: 40,
+        popover: {
+            image: [],
+            link: [],
+            air: []
+        }
+    });
+});
+

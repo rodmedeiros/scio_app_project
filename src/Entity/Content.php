@@ -34,9 +34,20 @@ class Content
      */
     private $grade;
 
+    /**
+     * @ORM\OneToMany(targetEntity="App\Entity\TeachingResources", mappedBy="content")
+     */
+    private $teachingResources;
+
     public function __construct()
     {
         $this->grade = new ArrayCollection();
+        $this->teachingResources = new ArrayCollection();
+    }
+
+    public function __toString()
+    {
+        return $this->getName();
     }
 
     public function getId(): ?int
@@ -89,6 +100,37 @@ class Content
     {
         if ($this->grade->contains($grade)) {
             $this->grade->removeElement($grade);
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|TeachingResources[]
+     */
+    public function getTeachingResources(): Collection
+    {
+        return $this->teachingResources;
+    }
+
+    public function addTeachingResource(TeachingResources $teachingResource): self
+    {
+        if (!$this->teachingResources->contains($teachingResource)) {
+            $this->teachingResources[] = $teachingResource;
+            $teachingResource->setContent($this);
+        }
+
+        return $this;
+    }
+
+    public function removeTeachingResource(TeachingResources $teachingResource): self
+    {
+        if ($this->teachingResources->contains($teachingResource)) {
+            $this->teachingResources->removeElement($teachingResource);
+            // set the owning side to null (unless already changed)
+            if ($teachingResource->getContent() === $this) {
+                $teachingResource->setContent(null);
+            }
         }
 
         return $this;

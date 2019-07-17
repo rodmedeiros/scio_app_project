@@ -43,6 +43,7 @@
                {{ include('default/_flash_messages.html.twig') }}
             </div>
             <div class="container-fluid">
+                {{ wo_render_breadcrumbs() }}
                 {% block content %}
                 {% endblock %}
             </div>

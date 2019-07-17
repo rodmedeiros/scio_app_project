@@ -568,6 +568,9 @@
     "webmozart/assert": {
         "version": "1.4.0"
     },
+    "whiteoctober/breadcrumbs-bundle": {
+        "version": "1.4.3"
+    },
     "zendframework/zend-code": {
         "version": "3.3.1"
     },

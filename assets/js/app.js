@@ -11,6 +11,7 @@ import $ from 'jquery';
 import 'bootstrap';
 import 'jquery-scrollTo';
 import 'select2';
+import 'summernote';
 
 global.$ = $;
 

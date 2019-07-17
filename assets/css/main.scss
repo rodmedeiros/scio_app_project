@@ -51,6 +51,10 @@ body {
 
 #open-icon{
   padding-left: 0px;
+  color: inherit;
+  &:hover{
+    text-decoration: none;
+  }
 }
 
 .navbar-expand-lg{
@@ -157,8 +161,46 @@ body {
   outline: none;
 }
 
+//breadcrumbs
+.breadcrumb{
+  background-color: white;
+  li{
+    span{
+      font-size: 14px;
+      font-family: Arial,sans-serif;
+      }
+    a{
+      &:hover{
+        text-decoration: none;
+      }
+    }
+  }
+}
+
+.fa-home{
+  background-color: #f5f5f5;
+  font-size: 20px;
+  padding: 5px;
+  color: #3d4a5d;
+  border-radius: 100%;
+}
+
+.separator{
+  padding-right: 2px;
+}
+
+//colors
+
+.purple{
+  background-color: #563d7c;
+  color: white;
+}
 
 
+//elements
 
-
-
+.element{
+  background-color: #f5f5f5;
+  padding: 10px;
+  margin: 20px 0;
+}

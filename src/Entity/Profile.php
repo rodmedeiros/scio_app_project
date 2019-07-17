@@ -2,6 +2,8 @@
 
 namespace App\Entity;
 
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -46,6 +48,16 @@ class Profile
      * @ORM\JoinColumn(nullable=false)
      */
     private $user;
+
+    /**
+     * @ORM\OneToMany(targetEntity="App\Entity\TeachingResources", mappedBy="profile")
+     */
+    private $teachingResources;
+
+    public function __construct()
+    {
+        $this->teachingResources = new ArrayCollection();
+    }
 
     public function getId(): ?int
     {
@@ -120,6 +132,37 @@ class Profile
     public function setUser(User $user): self
     {
         $this->user = $user;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|TeachingResources[]
+     */
+    public function getTeachingResources(): Collection
+    {
+        return $this->teachingResources;
+    }
+
+    public function addTeachingResource(TeachingResources $teachingResource): self
+    {
+        if (!$this->teachingResources->contains($teachingResource)) {
+            $this->teachingResources[] = $teachingResource;
+            $teachingResource->setProfile($this);
+        }
+
+        return $this;
+    }
+
+    public function removeTeachingResource(TeachingResources $teachingResource): self
+    {
+        if ($this->teachingResources->contains($teachingResource)) {
+            $this->teachingResources->removeElement($teachingResource);
+            // set the owning side to null (unless already changed)
+            if ($teachingResource->getProfile() === $this) {
+                $teachingResource->setProfile(null);
+            }
+        }
 
         return $this;
     }

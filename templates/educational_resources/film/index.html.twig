@@ -1,0 +1,55 @@
+{% extends 'base.html.twig' %}
+
+{% block content %}
+
+    <div class="row">
+        <div class="col-md-9">
+            {#        <div>#}
+            {#            <label>Disciplinas:</label>#}
+            {#            #}{#{% for subject in subjects %}#}
+            {#            {{ subjects | join(', ') }}#}
+            {#            #}{#{% endfor %}#}
+
+            {#        </div>#}
+            {#        <div>#}
+            {#            <label>Conteúdos</label>#}
+            {#            {{ contents | join(', ') }}#}
+            {#        </div>#}
+
+            <div>
+                <h3>Sugestões de Filme</h3>
+                {% for film in films %}
+                    <div class="rounded element">
+                        <span>
+                            {% if film.title %}
+                                <h5>Título: {{ film.title }}</h5>
+                            {% else %}
+                                <h5 class="text-warning">Não há título disponível</h5>
+                            {% endif %}
+                        </span>
+                        <span>Comentários:
+                            {% if film.comment %}
+                                {{ film.comment }}
+                            {% else %}
+                                <span class="text-warning">Não há comentários disponível</span>
+                            {% endif %}
+                        </span><br />
+                        <span>
+                            Acessar em:
+                            <a href="http://{{ film.description }}" target="_blank">{{ film.description }}</a>
+                        </span>
+                    </div>
+                {% endfor %}
+            </div>
+            <div>
+                <a href="{{ path('film_new') }}" class="btn btn-outline-info">Sugerir</a>
+                <a href="{{ path('film_new') }}" class="btn purple">Minhas Sugestões</a>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div>teste</div>
+        </div>
+    </div>
+
+
+{% endblock %}
