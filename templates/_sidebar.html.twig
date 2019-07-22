@@ -81,15 +81,34 @@
             </ul>
         </li>
         <li class="nav-item menu">
-            <a href="#midiaSubmenu" class="dropdown-toggle" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
-                <i class="nav-icon ion-ios-play"></i>Materiais de Apoio
+            <a href="#filmSubmenu" class="dropdown-toggle" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
+                <i class="nav-icon ion-ios-play"></i>Vídeos
             </a>
-            <ul class="collapse submenu" id="midiaSubmenu">
+            <ul class="collapse submenu" id="filmSubmenu">
                 <li>
-                    <a href="{{ path('films') }}">Vídeos</a>
+                    <a href="{{ path('profile_films') }}">Minhas Sugestões de Vídeos</a>
                 </li>
                 <li>
-                    <a href="#">Artigos</a>
+                    <a href="{{ path('films') }}">Pesquisar</a>
+                </li>
+                <li>
+                    <a href="{{ path('film_new') }}">Sugerir Novo</a>
+                </li>
+            </ul>
+        </li>
+        <li class="nav-item menu">
+            <a href="#paperSubmenu" class="dropdown-toggle" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
+                <i class="nav-icon ion-ios-paper-outline"></i>Artigos
+            </a>
+            <ul class="collapse submenu" id="paperSubmenu">
+                <li>
+                    <a href="{{ path('profile_papers') }}">Minhas Sugestões de Artigos</a>
+                </li>
+                <li>
+                    <a href="{{ path('papers') }}">Pesquisar</a>
+                </li>
+                <li>
+                    <a href="{{ path('paper_new') }}">Sugerir Novo</a>
                 </li>
             </ul>
         </li>

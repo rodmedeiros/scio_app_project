@@ -16,7 +16,7 @@ class Film extends TeachingResources
      * @ORM\GeneratedValue()
      * @ORM\Column(type="integer")
      */
-    private $id;
+    protected $id;
 
     /**
      * @ORM\Column(type="text", nullable=true)
@@ -55,5 +55,11 @@ class Film extends TeachingResources
         $this->title = $title;
 
         return $this;
+    }
+
+    public function getYouTubeEmbed(){
+        $string = explode('=', $this->getDescription());
+        $last_part = $string[count($string)-1];
+        return 'https://youtube.com/embed/'.$last_part;
     }
 }

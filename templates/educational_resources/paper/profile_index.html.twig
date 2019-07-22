@@ -6,38 +6,37 @@
 <div class="row">
     <div class="col-md-8">
         <div class="m-b-1 m-l-2">
-            <a href="{{ path('film_new') }}" class="btn btn-outline-info">Sugerir</a>
-            <a href="{{ path('profile_films') }}" class="btn purple">Minhas Sugestões</a>
+            <a href="{{ path('paper_new') }}" class="btn btn-outline-info">Sugerir Novo</a>
         </div>
-        {% for film in films %}
+        {% for paper in papers %}
                 <div class="d-flex justify-content-center m-0" >
                     <div class="m-4 film-object shadow bg-white">
                         <h4 class="m-b-3">
-                            {% if film.title %}
-                                Título: {{ film.title }}
+                            {% if paper.title %}
+                                Título: {{ paper.title }}
                             {% else %}
                                 Título: <span class="text-warning">Não há título disponível</span>
                             {% endif %}
                         </h4>
 
-                        <iframe width="560" height="315" src="{{ film.getYouTubeEmbed }}"
-                                frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
-                        <p>
                         <h5 class="m-t-2"><strong>Comentários</strong></h5>
-                        {% if film.comment %}
-                            {{ film.comment | raw }}
+                        {% if paper.comment %}
+                            {{ paper.comment | raw }}
                         {% else %}
                             <span class="text-warning">Não há comentário disponível</span>
                         {% endif %}
                         </p>
                         <p>
-                            Disciplina: {{ film.content.subject | capitalize }}<br/>
-                            Conteúdo: {{ film.content }}
+                            Disciplina: {{ paper.content.subject | capitalize }}<br/>
+                            Conteúdo: {{ paper.content }}
                         </p>
 
                         <p>
                             Disponível em:
-                            <a href="http://{{ film.description }}" target="_blank">{{ film.description }}</a>
+                            <a href="{{ paper.description }}" target="_blank">{{ paper.description }}</a>
+                        </p>
+                        <p>
+                            <a href="{{ path('paper_edit', {'id': paper.id}) }}" class="btn purple">Editar</a>
                         </p>
                     </div>
                 </div>
@@ -46,8 +45,8 @@
     </div>
     {{ include('_side_filter.html.twig', {
         'contents':contents, 'subjects': subjects,
-        'profile_subject': profile_subject,
-        'path': 'films'}
+        'profile_subject': null,
+        'path': 'profile_papers'}
         )
     }}
 </div>

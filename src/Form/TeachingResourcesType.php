@@ -20,10 +20,7 @@ class TeachingResourcesType extends AbstractType
                 'label' => 'Conteúdo Associado',
 
             ])
-            ->add('comment', null, [
-                'label' => 'Adicionar Comentário',
 
-            ])
         ;
     }
 

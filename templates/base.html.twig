@@ -42,8 +42,8 @@
             <div class="col-md-12">
                {{ include('default/_flash_messages.html.twig') }}
             </div>
-            <div class="container-fluid">
-                {{ wo_render_breadcrumbs() }}
+            {{ wo_render_breadcrumbs() }}
+            <div class="container-fluid p-4">
                 {% block content %}
                 {% endblock %}
             </div>

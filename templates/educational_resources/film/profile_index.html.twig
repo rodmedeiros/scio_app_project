@@ -7,7 +7,7 @@
     <div class="col-md-8">
         <div class="m-b-1 m-l-2">
             <a href="{{ path('film_new') }}" class="btn btn-outline-info">Sugerir</a>
-            <a href="{{ path('profile_films') }}" class="btn purple">Minhas Sugestões</a>
+
         </div>
         {% for film in films %}
                 <div class="d-flex justify-content-center m-0" >
@@ -39,6 +39,9 @@
                             Disponível em:
                             <a href="http://{{ film.description }}" target="_blank">{{ film.description }}</a>
                         </p>
+                        <p>
+                            <a href="{{ path('film_edit', {'id':film.id}) }}" class="btn purple">Editar</a>
+                        </p>
                     </div>
                 </div>
         {% endfor %}
@@ -46,8 +49,8 @@
     </div>
     {{ include('_side_filter.html.twig', {
         'contents':contents, 'subjects': subjects,
-        'profile_subject': profile_subject,
-        'path': 'films'}
+        'profile_subject': null,
+        'path': 'profile_films'}
         )
     }}
 </div>

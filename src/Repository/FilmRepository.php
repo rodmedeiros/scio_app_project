@@ -28,8 +28,6 @@ class FilmRepository extends ServiceEntityRepository
             ->andWhere('s.id = :val')
             ->setParameter('val', $value)
             ->orderBy('f.id', 'ASC')
-            ->getQuery()
-            ->getResult()
         ;
     }
 
@@ -42,4 +40,16 @@ class FilmRepository extends ServiceEntityRepository
             ->getOneOrNullResult()
         ;
     }
+
+    public function findByProfile($value)
+    {
+        return $this->createQueryBuilder('f')
+            ->andWhere('f.profile = :val')
+            ->setParameter('val', $value)
+            ->groupBy('f.content')
+            ->orderBy('f.id', 'ASC')
+        ;
+    }
+
+
 }

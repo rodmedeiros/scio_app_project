@@ -1,0 +1,43 @@
+<div class="col-md-4">
+    <h4 class="d-flex justify-content-center">Filtrar Vídeos</h4>
+    <form action="{{ path(path) }}" method="get">
+        <div class="accordion" id="contentFilter">
+            <div class="card">
+                <div class="card-header main-header"><span class="filter-title">Conteúdos por Disciplina</span></div>
+            </div>
+            {% for subject in subjects %}
+                <div class="card">
+                    <div class="card-header subject-card" id="header-{{ subject.id }}">
+                        <button class="btn btn-link" type="button" data-toggle="collapse"
+                                data-target="#subject-{{ subject.id }}" aria-expanded="true" >
+                            {{ subject | capitalize}}
+                        </button>
+                    </div>
+                    <div id="subject-{{ subject.id }}" class="collapse {% if subject.id == profile_subject %}show"{% endif %}
+                         aria-labelledby="header-{{ subject.id }}" data-parent="#contentFilter">
+                        <div class="card-body">
+                            <span class="p-0" style="width: 400px">
+                                    <input type="checkbox" class="checkbox-inline" name="subjects[]" value="{{ subject.id }}"
+                                            {% if  subject.id in filtered_subjects %} checked{% endif %}>
+                                    <label for="{{ subject.id }}">Todos</label>
+                            </span><br />
+                            {% for content in contents %}
+                                {% if content.subject == subject %}
+                                <span class="p-0" style="width: 400px">
+                                    <input type="checkbox" class="checkbox-inline" name="contents[]" value="{{ content.id }}"
+                                            {% if content.id in filtered_contents %} checked{% endif %}>
+                                    <label for="{{ content.id }}">{{ content.name }}</label>
+                                </span><br />
+                                {% endif %}
+                            {% endfor %}
+                            <div class="p-t-1">
+                                <button type="submit" class="btn bg-info btn-sm">Filtrar</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    </form>
+
+</div>

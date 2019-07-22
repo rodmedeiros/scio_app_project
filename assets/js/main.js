@@ -16,7 +16,7 @@ $('.select').select2();
 
 $(document).ready(function() {
     $('.summernote').summernote({
-        height: 40,
+        height: 100,
         popover: {
             image: [],
             link: [],

@@ -26,7 +26,7 @@ abstract class TeachingResources
      * @ORM\GeneratedValue()
      * @ORM\Column(type="integer")
      */
-    private $id;
+    protected $id;
 
     /**
      * @ORM\ManyToOne(targetEntity="App\Entity\Content", inversedBy="teachingResources")
