@@ -2,8 +2,8 @@
 
 namespace App\Controller;
 
-use App\Entity\PedagogicalProject;
-use App\Form\PedagogicalProjectType;
+use App\Entity\Slides;
+use App\Form\SlidesType;
 use App\Repository\ContentRepository;
 use App\Repository\SubjectRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -11,17 +11,17 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
 use WhiteOctober\BreadcrumbsBundle\Model\Breadcrumbs;
 
-class PedagogicalProjectController extends AbstractController
+class SlidesController extends AbstractController
 {
     /**
-     * @Route("/projetos", name="projects")
+     * @Route("/slides", name="slides")
      */
     public function index(Request $request, SubjectRepository $subjectRepository,
                           ContentRepository $contentRepository, Breadcrumbs $breadcrumbs
     )
     {
         //breadcrumbs
-        $breadcrumbs->addItem("Projetos Pedagógicos", $this->get("router")->generate("projects"));
+        $breadcrumbs->addItem("Slides", $this->get("router")->generate("slides"));
 
         //repositories to filter
         $subjects = $subjectRepository->findAll();
@@ -29,10 +29,10 @@ class PedagogicalProjectController extends AbstractController
 
         $profileSubject = $this->getUser()->getProfile()->getSubject()->getId();
 
-        //initial project
+        //initial slide
         $em = $this->getDoctrine()->getManager();
 
-        $entity = $em->getRepository(PedagogicalProject::class)
+        $entity = $em->getRepository(Slides::class)
             ->createQueryBuilder('f')
             ->join('f.content', 'c')
             ->join('c.subject', 's')
@@ -54,7 +54,7 @@ class PedagogicalProjectController extends AbstractController
             }
         }
 
-        //start with profile subject projects
+        //start with profile subject slides
         if(!($subjects_filtered or $contents_filtered)){
             $entity = $entity-> orWhere('s.id = :val')
                 ->setParameter('val', $profileSubject);
@@ -62,10 +62,10 @@ class PedagogicalProjectController extends AbstractController
 
         $entity = $entity->getQuery()->getResult();
 
-        return $this->render('educational_resources/pedagogical_project/index.html.twig', [
+        return $this->render('educational_resources/slides/index.html.twig', [
             'subjects' => $subjects,
             'contents' => $contents,
-            'projects' => $entity,
+            'slides' => $entity,
             'profile_subject' => $profileSubject,
             'filtered_subjects' => $subjects_filtered,
             'filtered_contents' => $contents_filtered,
@@ -73,14 +73,14 @@ class PedagogicalProjectController extends AbstractController
     }
 
     /**
-     * @Route("/projetos/minhas-sugestoes", name="profile_projects")
+     * @Route("/slides/minhas-sugestoes", name="profile_slides")
      */
     public function profileIndex(Request $request, SubjectRepository $subjectRepository,
                                  ContentRepository $contentRepository, Breadcrumbs $breadcrumbs
     )
     {
         //breadcrumbs
-        $breadcrumbs->addItem("Projetos Pedagógicos", $this->get("router")->generate("projects"));
+        $breadcrumbs->addItem("Slides", $this->get("router")->generate("slides"));
         $breadcrumbs->addItem("Minhas Sugestões");
 
         //repositories to filter
@@ -92,7 +92,7 @@ class PedagogicalProjectController extends AbstractController
         $em = $this->getDoctrine()->getManager();
 
         //base query
-        $entity = $em->getRepository(PedagogicalProject::class)
+        $entity = $em->getRepository(Slides::class)
             ->createQueryBuilder('f')
             ->join('f.content', 'c')
             ->join('c.subject', 's')
@@ -120,10 +120,10 @@ class PedagogicalProjectController extends AbstractController
 
         $entity = $entity->getQuery()->getResult();
 
-        return $this->render('educational_resources/pedagogical_project/profile_index.html.twig', [
+        return $this->render('educational_resources/slides/profile_index.html.twig', [
             'subjects' => $subjects,
             'contents' => $contents,
-            'projects' => $entity,
+            'slides' => $entity,
             'filtered_subjects' => $subjects_filtered,
             'filtered_contents' => $contents_filtered,
         ]);
@@ -131,18 +131,18 @@ class PedagogicalProjectController extends AbstractController
 
 
     /**
-     * @Route("projetos/novo", name="project_new")
+     * @Route("slide/novo", name="slide_new")
      */
     public function new(Request $request, Breadcrumbs $breadcrumbs)
     {
         //breadcrumbs
-        $breadcrumbs->addItem("Projetos Pedagógicos", $this->get("router")->generate("projects"));
-        $breadcrumbs->addItem("Novo Projeto Pedagógico");
+        $breadcrumbs->addItem("Slides", $this->get("router")->generate("slides"));
+        $breadcrumbs->addItem("Novo Slide");
 
-        $entity = new PedagogicalProject();
+        $entity = new Slides();
         $entity->setProfile($this->getUser()->getProfile());
 
-        $form = $this->createForm(PedagogicalProjectType::class, $entity);
+        $form = $this->createForm(SlidesType::class, $entity);
         $form->handleRequest($request);
         $em = $this->getDoctrine()->getManager();
 
@@ -150,29 +150,29 @@ class PedagogicalProjectController extends AbstractController
             if ($form->isSubmitted() && $form->isValid()){
                 $em->persist($entity);
                 $em->flush();
-                $this->addFlash('success', 'Projeto Pedagógico adicionado com sucesso!');
-                return $this->redirectToRoute('projects');
+                $this->addFlash('success', 'Slide adicionado com sucesso!');
+                return $this->redirectToRoute('slides');
             }
         }catch (\Exception $e){
-            $this->addFlash('error', 'Não foi possível criar projeto pedagógico:'.$e);
+            $this->addFlash('error', 'Não foi possível criar o slide:'.$e);
         }
 
-        return $this->render('educational_resources/pedagogical_project/new.html.twig', [
+        return $this->render('educational_resources/slides/new.html.twig', [
             'form' => $form->createView(),
         ]);
     }
 
     /**
-     * @Route("projeto/{id}/editar", name="project_edit", requirements={"id"="\d+"})
+     * @Route("slides/{id}/editar", name="slide_edit", requirements={"id"="\d+"})
      */
-    public function edit(Request $request, PedagogicalProject $entity, Breadcrumbs $breadcrumbs)
+    public function edit(Request $request, Slides $entity, Breadcrumbs $breadcrumbs)
     {
         //breadcrumbs
-        $breadcrumbs->addItem("Projeto Pedagógico", $this->get("router")->generate("projects"));
-        $breadcrumbs->addItem("Editar Projeto Pedagógico");
+        $breadcrumbs->addItem("Slides", $this->get("router")->generate("slides"));
+        $breadcrumbs->addItem("Editar Slide");
 
 
-        $form = $this->createForm(PedagogicalProjectType::class, $entity);
+        $form = $this->createForm(SlidesType::class, $entity);
         $form->handleRequest($request);
         $em = $this->getDoctrine()->getManager();
 
@@ -180,14 +180,14 @@ class PedagogicalProjectController extends AbstractController
             if ($form->isSubmitted() && $form->isValid()){
                 $em->persist($entity);
                 $em->flush();
-                $this->addFlash('success', 'Projeto Pedagógico editado com sucesso!');
-                return $this->redirectToRoute('projects');
+                $this->addFlash('success', 'Slide editado com sucesso!');
+                return $this->redirectToRoute('slides');
             }
         }catch (\Exception $e){
-            $this->addFlash('error', 'Não foi possível editar projeto pedagógico:'.$e);
+            $this->addFlash('error', 'Não foi possível editar o slide:'.$e);
         }
 
-        return $this->render('educational_resources/pedagogical_project/edit.html.twig', [
+        return $this->render('educational_resources/slides/edit.html.twig', [
             'form' => $form->createView(),
         ]);
     }

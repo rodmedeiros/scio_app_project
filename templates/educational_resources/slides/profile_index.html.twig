@@ -1,0 +1,43 @@
+{% extends 'base.html.twig' %}
+
+
+{% block content %}
+
+<div class="row">
+    <div class="col-md-8">
+        <div class="m-b-1 m-l-2">
+            <a href="{{ path('slide_new') }}" class="btn btn-outline-info">Sugerir Novo</a>
+        </div>
+        {% for slide in slides %}
+            <div class="d-flex justify-content-center m-0" >
+                <div class="m-4 film-object shadow bg-white">
+                    <h4 class="m-b-3">
+                        Conteúdo: <span class="text-info"><strong>{{ slide.content }}</strong></span>
+                    </h4>
+                    <span class="">Disciplina: {{ slide.content.subject | capitalize }}<br/></span>
+                    <p>
+                    <h5 class="m-t-2"><strong>Descrição</strong></h5>
+                    {% if slide.description %}
+                        {{ slide.description | raw }}
+                    {% else %}
+                        <span class="text-warning">Não há descrição disponível</span>
+                    {% endif %}
+                    </p>
+                    <p>
+
+                    </p>
+                    <a href="#" target="_blank"><span class="btn-label icon fa fa-download"></span>Download</a>
+                    <a href="{{ path('slide_edit', {'id':slide.id}) }}" class="btn purple btn-sm float-right">Editar</a>
+                </div>
+            </div>
+        {% endfor %}
+
+    </div>
+    {{ include('_side_filter.html.twig', {
+        'contents':contents, 'subjects': subjects,
+        'profile_subject': null,
+        'path': 'profile_slides'}
+        )
+    }}
+</div>
+{% endblock %}
