@@ -1,0 +1,24 @@
+vich_uploader:
+    db_driver: orm
+    storage: gaufrette
+    mappings:
+        lesson_plain:
+            uri_prefix: /images/lesson_plain
+            upload_destination:  lesson_plain_image_fs
+            namer: vich_uploader.namer_origname
+            inject_on_load: false
+            delete_on_update: true
+            delete_on_remove: true
+
+knp_gaufrette:
+    stream_wrapper: ~
+    adapters:
+        lesson_plain:
+            local:
+                directory: "%kernel.root_dir%/../web/images/lesson_plain"
+    filesystems:
+        product_image_fs:
+            adapter: lesson_plain
+
+#    metadata:
+#        auto_detection: true

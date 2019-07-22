@@ -5,6 +5,7 @@
         "php": "^7.1.3",
         "ext-ctype": "*",
         "ext-iconv": "*",
+        "knplabs/knp-gaufrette-bundle": "^0.6.1",
         "knplabs/knp-menu-bundle": "^2.2",
         "sensio/framework-extra-bundle": "^5.3",
         "symfony/apache-pack": "^1.0",
@@ -30,6 +31,7 @@
         "symfony/web-link": "4.3.*",
         "symfony/webpack-encore-bundle": "^1.6",
         "symfony/yaml": "4.3.*",
+        "vich/uploader-bundle": "^1.10",
         "whiteoctober/breadcrumbs-bundle": "^1.4"
     },
     "require-dev": {

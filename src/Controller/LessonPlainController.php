@@ -2,27 +2,26 @@
 
 namespace App\Controller;
 
-use App\Repository\ContentRepository;
-use App\Repository\SubjectRepository;
-use phpDocumentor\Reflection\Types\This;
-use Symfony\Component\HttpFoundation\Request;
+use App\Entity\LessonPlain;
+use App\Form\LessonPlainType;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Routing\Annotation\Route;
-use App\Entity\Paper;
-use App\Form\PaperType;
+use App\Repository\ContentRepository;
+use App\Repository\SubjectRepository;
+use Symfony\Component\HttpFoundation\Request;
 use WhiteOctober\BreadcrumbsBundle\Model\Breadcrumbs;
 
-class PaperController extends AbstractController
+class LessonPlainController extends AbstractController
 {
     /**
-     * @Route("/artigos", name="papers")
+     * @Route("/planos-de-aula", name="lesson_plains")
      */
     public function index(Request $request, SubjectRepository $subjectRepository,
                           ContentRepository $contentRepository, Breadcrumbs $breadcrumbs
     )
     {
         //breadcrumbs
-        $breadcrumbs->addItem("Artigos", $this->get("router")->generate("papers"));
+        $breadcrumbs->addItem("Planos de Aula", $this->get("router")->generate("lesson_plains"));
 
         //repositories to filter
         $subjects = $subjectRepository->findAll();
@@ -30,10 +29,10 @@ class PaperController extends AbstractController
 
         $profileSubject = $this->getUser()->getProfile()->getSubject()->getId();
 
-        //initial papers
+        //initial lesson plains
         $em = $this->getDoctrine()->getManager();
 
-        $entity = $em->getRepository(Paper::class)
+        $entity = $em->getRepository(LessonPlain::class)
             ->createQueryBuilder('f')
             ->join('f.content', 'c')
             ->join('c.subject', 's')
@@ -55,7 +54,7 @@ class PaperController extends AbstractController
             }
         }
 
-        //start with profile subject papers
+        //start with profile subject lesson plains
         if(!($subjects_filtered or $contents_filtered)){
             $entity = $entity-> orWhere('s.id = :val')
                 ->setParameter('val', $profileSubject);
@@ -63,10 +62,10 @@ class PaperController extends AbstractController
 
         $entity = $entity->getQuery()->getResult();
 
-        return $this->render('educational_resources/paper/index.html.twig', [
+        return $this->render('educational_resources/lesson_plain/index.html.twig', [
             'subjects' => $subjects,
             'contents' => $contents,
-            'papers' => $entity,
+            'lesson_plains' => $entity,
             'profile_subject' => $profileSubject,
             'filtered_subjects' => $subjects_filtered,
             'filtered_contents' => $contents_filtered,
@@ -74,14 +73,14 @@ class PaperController extends AbstractController
     }
 
     /**
-     * @Route("/artigos/minhas-sugestoes", name="profile_papers")
+     * @Route("/planos-de-aula/minhas-sugestoes", name="profile_lesson_plains")
      */
     public function profileIndex(Request $request, SubjectRepository $subjectRepository,
                                  ContentRepository $contentRepository, Breadcrumbs $breadcrumbs
     )
     {
         //breadcrumbs
-        $breadcrumbs->addItem("Arigos", $this->get("router")->generate("papers"));
+        $breadcrumbs->addItem("Planos de Aula", $this->get("router")->generate("lesson_plains"));
         $breadcrumbs->addItem("Minhas Sugestões");
 
         //repositories to filter
@@ -93,7 +92,7 @@ class PaperController extends AbstractController
         $em = $this->getDoctrine()->getManager();
 
         //base query
-        $entity = $em->getRepository(Paper::class)
+        $entity = $em->getRepository(LessonPlain::class)
             ->createQueryBuilder('f')
             ->join('f.content', 'c')
             ->join('c.subject', 's')
@@ -121,10 +120,10 @@ class PaperController extends AbstractController
 
         $entity = $entity->getQuery()->getResult();
 
-        return $this->render('educational_resources/paper/profile_index.html.twig', [
+        return $this->render('educational_resources/lesson_plain/profile_index.html.twig', [
             'subjects' => $subjects,
             'contents' => $contents,
-            'papers' => $entity,
+            'lesson_plains' => $entity,
             'filtered_subjects' => $subjects_filtered,
             'filtered_contents' => $contents_filtered,
         ]);
@@ -132,18 +131,18 @@ class PaperController extends AbstractController
 
 
     /**
-     * @Route("artigo/novo", name="paper_new")
+     * @Route("plano-de-aula/novo", name="lesson_plain_new")
      */
     public function new(Request $request, Breadcrumbs $breadcrumbs)
     {
         //breadcrumbs
-        $breadcrumbs->addItem("Artigos", $this->get("router")->generate("papers"));
-        $breadcrumbs->addItem("Sugestão de Artigo");
+        $breadcrumbs->addItem("Planos de Aula", $this->get("router")->generate("lesson_plains"));
+        $breadcrumbs->addItem("Novo Plano de Aula");
 
-        $entity = new Paper();
+        $entity = new LessonPlain();
         $entity->setProfile($this->getUser()->getProfile());
 
-        $form = $this->createForm(PaperType::class, $entity);
+        $form = $this->createForm(LessonPlainType::class, $entity);
         $form->handleRequest($request);
         $em = $this->getDoctrine()->getManager();
 
@@ -151,54 +150,46 @@ class PaperController extends AbstractController
             if ($form->isSubmitted() && $form->isValid()){
                 $em->persist($entity);
                 $em->flush();
-                $this->addFlash('success', 'sugestão de artigo adicionada com sucesso!');
-                return $this->redirectToRoute('papers');
+                $this->addFlash('success', 'Plano de aula adicionado com sucesso!');
+                return $this->redirectToRoute('lesson_plains');
             }
         }catch (\Exception $e){
-            $this->addFlash('error', 'Não foi possível criar sugestão de artigo:'.$e);
+            $this->addFlash('error', 'Não foi possível criar plano de aula:'.$e);
         }
 
-        return $this->render('educational_resources/paper/new.html.twig', [
+        return $this->render('educational_resources/lesson_plain/new.html.twig', [
             'form' => $form->createView(),
         ]);
     }
 
     /**
-     * @Route("artigo/{id}/editar", name="paper_edit", requirements={"id"="\d+"})
+     * @Route("plano-de-aula/{id}/editar", name="lesson_plain_edit", requirements={"id"="\d+"})
      */
-    public function edit(Request $request, Paper $entity, Breadcrumbs $breadcrumbs)
+    public function edit(Request $request, LessonPlain $entity, Breadcrumbs $breadcrumbs)
     {
         //breadcrumbs
-        $breadcrumbs->addItem("Vídeos", $this->get("router")->generate("papers"));
-        $breadcrumbs->addItem("Editar Sugestão de Vídeo");
+        $breadcrumbs->addItem("Planos de Aula", $this->get("router")->generate("lesson_plains"));
+        $breadcrumbs->addItem("Editar Plano de aula");
 
-        $entity->setProfile($this->getUser()->getProfile());
 
-        $form = $this->createForm(PaperType::class, $entity);
+        $form = $this->createForm(LessonPlainType::class, $entity);
         $form->handleRequest($request);
         $em = $this->getDoctrine()->getManager();
 
         try{
             if ($form->isSubmitted() && $form->isValid()){
-                //removing http and http to maintain a pattern
-                $description = $form->getData()->getDescription();
-                $description = str_replace("https://","",$description);
-                $description = str_replace("http://","",$description);
-
-                $entity->setDescription($description);
                 $em->persist($entity);
                 $em->flush();
                 $this->addFlash('success', 'sugestão de artigo editada com sucesso!');
-                return $this->redirectToRoute('papers');
+                return $this->redirectToRoute('lesson_plains');
             }
         }catch (\Exception $e){
             $this->addFlash('error', 'Não foi possível editar sugestão de artigo:'.$e);
         }
 
-        return $this->render('educational_resources/paper/edit.html.twig', [
+        return $this->render('educational_resources/lesson_plain/edit.html.twig', [
             'form' => $form->createView(),
         ]);
     }
-
 
 }
