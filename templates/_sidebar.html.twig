@@ -1,5 +1,5 @@
 <div id="mySidenav" class="sidenav">
-    <ul class="fixed-top">
+    <ul>
         <li class="nav-item menu">
             <a href="#accountSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
                 <i class="nav-icon icon ion-person"></i>Minha Conta
@@ -22,13 +22,13 @@
             </a>
             <ul class="collapse submenu" id="exercisesSubmenu">
                 <li>
-                    <a href="#">Minhas Questões</a>
+                    <a href="{{ path('profile_exercises') }}">Minhas Questões</a>
                 </li>
                 <li>
-                    <a href="#">Pesquisar</a>
+                    <a href="{{ path('exercises') }}">Pesquisar</a>
                 </li>
                 <li>
-                    <a href="#">Nova</a>
+                    <a href="{{ path('exercise_new') }}">Nova</a>
                 </li>
             </ul>
         </li>

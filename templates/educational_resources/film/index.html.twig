@@ -14,7 +14,7 @@
                     <div class="m-4 film-object shadow bg-white">
                         <h4 class="m-b-3">
                             {% if film.title %}
-                                Título: {{ film.title }}
+                                Título: <span class="text-info"><strong>{{ film.title }}</strong></span>
                             {% else %}
                                 Título: <span class="text-warning">Não há título disponível</span>
                             {% endif %}
@@ -32,7 +32,7 @@
                         </p>
                         <p>
                             Disciplina: {{ film.content.subject | capitalize }}<br/>
-                            Conteúdo: {{ film.content }}
+                                Conteúdo: <span class="lime-green"><strong>{{ film.content }}</strong></span>
                         </p>
 
                         <p>

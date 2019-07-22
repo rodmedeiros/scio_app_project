@@ -25,3 +25,14 @@ $(document).ready(function() {
     });
 });
 
+$(document).ready(function() {
+    $('.summernote-exercise').summernote({
+        height: 400,
+        popover: {
+            image: [],
+            link: [],
+            air: []
+        }
+    });
+});
+

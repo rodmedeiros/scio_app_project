@@ -7,7 +7,7 @@ body {
 .sidenav {
   height: 100%;
   width: 280px;
-  position: absolute;
+  position: fixed;
   z-index: 1;
   top: 0;
   left: 0;
@@ -15,6 +15,7 @@ body {
   overflow-x: hidden;
   transition: 0.5s;
   padding-top: 0px;
+  border-top:50px;
   ul{
     width: 280px;
   }
@@ -31,6 +32,7 @@ body {
 
 .sidenav a:hover {
   color: #ffffff;
+
 }
 
 .sidenav .closebtn {
@@ -86,6 +88,7 @@ body {
 
 .sidenav ul{
   padding: 0;
+  position: fixed;
 }
 
 .submenu a{
@@ -208,6 +211,10 @@ hr{
   color: white;
 }
 
+.lime-green-fa{
+  color: limegreen;
+}
+
 
 //elements
 
@@ -242,7 +249,7 @@ hr{
 }
 
 //general
-.fa-download{
+.fa-download, .fa-paperclip{
   padding-left: 0;
   padding-right: 10px;
   color: limegreen;
@@ -251,3 +258,13 @@ hr{
 //Teaching Resources
 
 //Slide
+
+
+//exercise
+
+.exercise{
+  font-size: 18px;
+  font-family: Raleway;
+  text-decoration: none;
+
+}
