@@ -40,6 +40,10 @@ class LessonPlainType extends TeachingResourcesType
 //                    ])
 //                ],
 //            ])
+
+            ->add('title', null, [
+                'label' => 'Título'
+            ])
             ->add('imageFile',FileType::class, [
             ]);
         ;
