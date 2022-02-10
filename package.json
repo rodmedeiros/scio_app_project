@@ -8,7 +8,7 @@
     "jquery-scrollTo": "^0.2.2",
     "jquery-validate": "^2.0.0",
     "jquery-waypoints": "^2.0.5",
-    "node-sass": "^4.12.0",
+    "node-sass": "^7.0.0",
     "popper": "^1.0.1",
     "popper.js": "^1.15.0",
     "sass-loader": "^7.0.1",
