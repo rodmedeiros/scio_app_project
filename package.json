@@ -33,7 +33,7 @@
     "datatables.net": "^1.10.19",
     "font-awesome": "^4.7.0",
     "jquery-validate": "^2.0.0",
-    "moment": "^2.24.0",
+    "moment": "^2.29.2",
     "npm-watch": "^0.6.0",
     "summernote": "^0.8.12"
   },
